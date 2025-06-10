@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApi.Domain", "BankApi.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApi.Infrastructure", "BankApi.Infrastructure\BankApi.Infrastructure.csproj", "{B3517D60-CBB9-4DA8-B1AA-E810F18D6658}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApi.Service", "BankApi.Service\BankApi.Service.csproj", "{480234DC-B296-4B91-A81C-B83714EDFE9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B3517D60-CBB9-4DA8-B1AA-E810F18D6658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3517D60-CBB9-4DA8-B1AA-E810F18D6658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3517D60-CBB9-4DA8-B1AA-E810F18D6658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{480234DC-B296-4B91-A81C-B83714EDFE9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{480234DC-B296-4B91-A81C-B83714EDFE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{480234DC-B296-4B91-A81C-B83714EDFE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{480234DC-B296-4B91-A81C-B83714EDFE9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

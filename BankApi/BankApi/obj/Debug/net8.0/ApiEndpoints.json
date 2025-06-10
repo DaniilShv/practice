@@ -1,1 +1,172 @@
-[]
+[
+  {
+    "ContainingType": "BankApi.Controllers.BankBranchController",
+    "Method": "CreateBankBranch",
+    "RelativePath": "BankBranch/CreateBankBranch/{locationId}/{adress}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "locationId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "adress",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.BankBranchController",
+    "Method": "CreateLocation",
+    "RelativePath": "BankBranch/CreateLocation/{name}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.CardsController",
+    "Method": "CreateBankCard",
+    "RelativePath": "Cards/CreateBankCard/{bankRecordId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bankRecordId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.ClientController",
+    "Method": "CreateClientAsync",
+    "RelativePath": "Client/CreateClientAsync/{surname}/{name}/{patronymic}/{serialPassport}/{numberPassport}/{login}/{password}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "surname",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "patronymic",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "serialPassport",
+        "Type": "System.UInt16",
+        "IsRequired": true
+      },
+      {
+        "Name": "numberPassport",
+        "Type": "System.UInt32",
+        "IsRequired": true
+      },
+      {
+        "Name": "login",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.DepositeController",
+    "Method": "CreateDeposit",
+    "RelativePath": "Deposite/CreateDeposit/{clientId}/{depositId}/{total}/{dist}/{percent}/{type}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "depositId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "total",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      },
+      {
+        "Name": "dist",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "percent",
+        "Type": "System.Double",
+        "IsRequired": true
+      },
+      {
+        "Name": "type",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

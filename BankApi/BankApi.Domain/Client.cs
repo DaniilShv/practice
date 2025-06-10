@@ -19,5 +19,9 @@
         public ushort SerialPassport { get; set; }
 
         public uint NumberPassport { get; set; }
+
+        public string Login { get; set; }
+
+        public string PasswordHash { get; set; }
     }
 }

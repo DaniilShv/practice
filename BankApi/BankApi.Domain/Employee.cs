@@ -27,5 +27,9 @@ namespace BankApi.Domain
         public string Position { get; set; }
 
         public decimal Salary { get; set; }
+
+        public string Login { get; set; }
+
+        public string PasswordHash { get; set; }
     }
 }

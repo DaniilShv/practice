@@ -8,7 +8,7 @@
 
         public Guid BankRecordId { get; set; }
 
-        public int CardNumber { get; set; }
+        public ulong CardNumber { get; set; }
 
         public DateTime Date { get; set; }
 

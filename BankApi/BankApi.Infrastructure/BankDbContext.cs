@@ -68,11 +68,13 @@ namespace BankApi.Infrastructure
 
             builder.HasMany(x => x.BankCards)
                 .WithOne(x => x.BankRecord)
-                .HasForeignKey(x => x.BankRecordId);
+                .HasForeignKey(x => x.BankRecordId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(x => x.PaymentHistories)
                 .WithOne(x => x.BankRecord)
-                .HasForeignKey(x => x.BankRecordId);
+                .HasForeignKey(x => x.BankRecordId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 
@@ -81,17 +83,21 @@ namespace BankApi.Infrastructure
         public void Configure(EntityTypeBuilder<Client> builder)
         {
             builder.HasKey(x => x.Id);
+
             builder.HasMany(x => x.BankRecords)
                 .WithOne(x => x.Client)
-                .HasForeignKey(x => x.ClientId);
+                .HasForeignKey(x => x.ClientId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(x => x.ClientCredits)
                 .WithOne(x => x.Client)
-                .HasForeignKey(x => x.ClientId);
+                .HasForeignKey(x => x.ClientId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(x => x.ClientDeposits)
                 .WithOne(x => x.Client)
-                .HasForeignKey(x => x.ClientId);
+                .HasForeignKey(x => x.ClientId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 

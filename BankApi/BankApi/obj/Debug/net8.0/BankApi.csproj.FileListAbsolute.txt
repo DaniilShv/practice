@@ -141,3 +141,6 @@ C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Domain.dll
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Infrastructure.dll
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Infrastructure.pdb
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Domain.pdb
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Service.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Service.pdb
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Identity.PasswordHasher.dll

@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\practice\\practice\\BankApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|c:\\practice\\practice\\bankapi\\bankapi\\controllers\\bankbranchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|solutionrelative:bankapi\\controllers\\bankbranchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|c:\\practice\\practice\\bankapi\\bankapi\\controllers\\cardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|solutionrelative:bankapi\\controllers\\cardscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|c:\\practice\\practice\\bankapi\\bankapi\\controllers\\depositecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|solutionrelative:bankapi\\controllers\\depositecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{480234DC-B296-4B91-A81C-B83714EDFE9E}|BankApi.Service\\BankApi.Service.csproj|c:\\practice\\practice\\bankapi\\bankapi.service\\extensions\\servicesextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{480234DC-B296-4B91-A81C-B83714EDFE9E}|BankApi.Service\\BankApi.Service.csproj|solutionrelative:bankapi.service\\extensions\\servicesextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3517D60-CBB9-4DA8-B1AA-E810F18D6658}|BankApi.Infrastructure\\BankApi.Infrastructure.csproj|c:\\practice\\practice\\bankapi\\bankapi.infrastructure\\extensions\\repositoryextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3517D60-CBB9-4DA8-B1AA-E810F18D6658}|BankApi.Infrastructure\\BankApi.Infrastructure.csproj|solutionrelative:bankapi.infrastructure\\extensions\\repositoryextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|c:\\practice\\practice\\bankapi\\bankapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|solutionrelative:bankapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,8 +34,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BankBranchController.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\BankBranchController.cs",
+              "RelativeDocumentMoniker": "BankApi\\Controllers\\BankBranchController.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\BankBranchController.cs*",
+              "RelativeToolTip": "BankApi\\Controllers\\BankBranchController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T10:27:20.805Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -50,15 +83,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "CardsController.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\CardsController.cs",
+              "RelativeDocumentMoniker": "BankApi\\Controllers\\CardsController.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\CardsController.cs",
+              "RelativeToolTip": "BankApi\\Controllers\\CardsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T15:24:53.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DepositeController.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\DepositeController.cs",
+              "RelativeDocumentMoniker": "BankApi\\Controllers\\DepositeController.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\DepositeController.cs",
+              "RelativeToolTip": "BankApi\\Controllers\\DepositeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T15:23:39.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RepositoryExtension.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi.Infrastructure\\Extensions\\RepositoryExtension.cs",
+              "RelativeDocumentMoniker": "BankApi.Infrastructure\\Extensions\\RepositoryExtension.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi.Infrastructure\\Extensions\\RepositoryExtension.cs",
+              "RelativeToolTip": "BankApi.Infrastructure\\Extensions\\RepositoryExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T10:45:18.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ServicesExtension.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi.Service\\Extensions\\ServicesExtension.cs",
+              "RelativeDocumentMoniker": "BankApi.Service\\Extensions\\ServicesExtension.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi.Service\\Extensions\\ServicesExtension.cs",
+              "RelativeToolTip": "BankApi.Service\\Extensions\\ServicesExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T10:46:55.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi\\Program.cs",
               "RelativeDocumentMoniker": "BankApi\\Program.cs",
               "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi\\Program.cs",
               "RelativeToolTip": "BankApi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T17:14:34.377Z",
+              "WhenOpened": "2025-06-10T10:49:19.217Z",
               "EditorCaption": ""
             }
           ]

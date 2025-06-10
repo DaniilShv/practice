@@ -15,11 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BankApi.Infrastructure\BankApi.Infrastructure.csproj" />
+    <ProjectReference Include="..\BankApi.Service\BankApi.Service.csproj" />
   </ItemGroup>
 
 </Project>

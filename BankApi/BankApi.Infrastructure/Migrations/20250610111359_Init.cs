@@ -206,7 +206,7 @@ namespace BankApi.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     BankRecordId = table.Column<Guid>(type: "uuid", nullable: false),
-                    CardNumber = table.Column<int>(type: "integer", nullable: false),
+                    CardNumber = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
                     Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CvvCode = table.Column<int>(type: "integer", nullable: false)
                 },

@@ -51,8 +51,8 @@ namespace BankApi.Infrastructure.Migrations
                     b.Property<Guid>("BankRecordId")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("CardNumber")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("CardNumber")
+                        .HasColumnType("numeric(20,0)");
 
                     b.Property<int>("CvvCode")
                         .HasColumnType("integer");
@@ -102,12 +102,20 @@ namespace BankApi.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<long>("NumberPassport")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Patronymic")
                         .HasColumnType("text");
@@ -238,7 +246,15 @@ namespace BankApi.Infrastructure.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("text");
 
