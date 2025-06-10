@@ -1,0 +1,12 @@
+C:\practice\practice\BankApi\BankApi.Domain\bin\Debug\net8.0\BankApi.Domain.deps.json
+C:\practice\practice\BankApi\BankApi.Domain\bin\Debug\net8.0\BankApi.Domain.dll
+C:\practice\practice\BankApi\BankApi.Domain\bin\Debug\net8.0\BankApi.Domain.pdb
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\BankApi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\BankApi.Domain.AssemblyInfoInputs.cache
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\BankApi.Domain.AssemblyInfo.cs
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\BankApi.Domain.csproj.CoreCompileInputs.cache
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\BankApi.Domain.sourcelink.json
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\BankApi.Domain.dll
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\refint\BankApi.Domain.dll
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\BankApi.Domain.pdb
+C:\practice\practice\BankApi\BankApi.Domain\obj\Debug\net8.0\ref\BankApi.Domain.dll
