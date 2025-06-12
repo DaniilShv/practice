@@ -13,6 +13,7 @@ namespace BankApi.Infrastructure.Extensions
             service.AddScoped<IClientRepository, ClientRepository>();
             service.AddScoped<IBankBranchRepository, BankBranchRepository>();
             service.AddScoped<IClientDepositsRepository, ClientDepositsRepository>();
+            service.AddScoped<IBankRecordRepository, BankRecordRepository>();
         }
     }
 }

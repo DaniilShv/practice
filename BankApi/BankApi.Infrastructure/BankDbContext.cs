@@ -1,7 +1,6 @@
 ﻿using BankApi.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace BankApi.Infrastructure
 {

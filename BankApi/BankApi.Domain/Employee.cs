@@ -10,8 +10,6 @@ namespace BankApi.Domain
 
         public Guid BankBranchId { get; set; }
 
-        public ICollection<BankRecord> BankRecords { get; set; }
-
         public string Surname { get; set; }
 
         public string Name { get; set; }

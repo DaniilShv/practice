@@ -79,9 +79,6 @@ namespace BankApi.Infrastructure.Migrations
                     b.Property<Guid>("ClientId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("EmployeeId")
-                        .HasColumnType("uuid");
-
                     b.Property<decimal>("Total")
                         .HasColumnType("numeric");
 
@@ -90,8 +87,6 @@ namespace BankApi.Infrastructure.Migrations
                     b.HasIndex("BankBranchId");
 
                     b.HasIndex("ClientId");
-
-                    b.HasIndex("EmployeeId");
 
                     b.ToTable("BankRecords");
                 });
@@ -359,10 +354,6 @@ namespace BankApi.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BankApi.Domain.Employee", null)
-                        .WithMany("BankRecords")
-                        .HasForeignKey("EmployeeId");
-
                     b.Navigation("BankBranch");
 
                     b.Navigation("Client");
@@ -459,11 +450,6 @@ namespace BankApi.Infrastructure.Migrations
             modelBuilder.Entity("BankApi.Domain.Deposit", b =>
                 {
                     b.Navigation("ClientDeposits");
-                });
-
-            modelBuilder.Entity("BankApi.Domain.Employee", b =>
-                {
-                    b.Navigation("BankRecords");
                 });
 
             modelBuilder.Entity("BankApi.Domain.Location", b =>

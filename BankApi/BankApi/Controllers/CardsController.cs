@@ -12,5 +12,13 @@ namespace BankApi.Controllers
         {
             await _bankCardService.CreateBankCardAsync(bankRecordId, HttpContext.RequestAborted);
         }
+
+        [HttpPut("PayCard")]
+        public async Task PayCard([FromQuery]Guid cardId, [FromQuery]decimal sum,
+            [FromQuery]string nameSeller)
+        {
+            await _bankCardService
+                .PayCardAsync(cardId, sum, nameSeller, HttpContext.RequestAborted);
+        }
     }
 }

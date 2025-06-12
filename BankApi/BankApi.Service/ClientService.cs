@@ -1,4 +1,5 @@
 ﻿using BankApi.Domain;
+using BankApi.Domain.DTOs;
 using BankApi.Infrastructure.Interfaces;
 using BankApi.Service.Interfaces;
 using Identity.PasswordHasher;
@@ -25,6 +26,16 @@ namespace BankApi.Service
             };
 
             await _clientRepository.CreateClientAsync(client, token);
+        }
+
+        public async Task<List<BankCardDto>> GetAllBankCardsAsync(Guid bankRecordId, CancellationToken token)
+        {
+            return await _clientRepository.GetAllBankCardsAsync(bankRecordId, token);
+        }
+
+        public async Task<List<BankRecordDto>> GetBankRecordsAsync(Guid clientId, CancellationToken token)
+        {
+            return await _clientRepository.GetAllBankRecordsAsync(clientId, token);
         }
     }
 }

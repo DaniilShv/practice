@@ -49,6 +49,87 @@
     ]
   },
   {
+    "ContainingType": "BankApi.Controllers.BankRecordsController",
+    "Method": "CreateBankRecord",
+    "RelativePath": "BankRecords/CreateBankRecord/{clientId}/{bankBranchId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "bankBranchId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.BankRecordsController",
+    "Method": "DepositMoneyOnRecord",
+    "RelativePath": "BankRecords/DepositMoneyOnRecord/{bankRecordId}/{total}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bankRecordId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "total",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.BankRecordsController",
+    "Method": "WithdrawalMoneyOnRecord",
+    "RelativePath": "BankRecords/WithdrawalMoneyOnRecord/{bankRecordId}/{sum}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bankRecordId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "sum",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "BankApi.Controllers.CardsController",
     "Method": "CreateBankCard",
     "RelativePath": "Cards/CreateBankCard/{bankRecordId}",
@@ -60,6 +141,38 @@
         "Name": "bankRecordId",
         "Type": "System.Guid",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.CardsController",
+    "Method": "PayCard",
+    "RelativePath": "Cards/PayCard",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cardId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "sum",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "nameSeller",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -123,9 +236,61 @@
     ]
   },
   {
-    "ContainingType": "BankApi.Controllers.DepositeController",
+    "ContainingType": "BankApi.Controllers.ClientController",
+    "Method": "GetClientBankCards",
+    "RelativePath": "Client/GetClientBankCards/{bankRecordId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bankRecordId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[BankApi.Domain.DTOs.BankCardDto, BankApi.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.ClientController",
+    "Method": "GetClientBankRecordsAsync",
+    "RelativePath": "Client/GetClientBankRecordsAsync/{clientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[BankApi.Domain.DTOs.BankRecordDto, BankApi.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.DepositController",
     "Method": "CreateDeposit",
-    "RelativePath": "Deposite/CreateDeposit/{clientId}/{depositId}/{total}/{dist}/{percent}/{type}",
+    "RelativePath": "Deposit/CreateDeposit/{clientId}/{depositId}/{total}/{dist}/{percent}/{type}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -158,6 +323,80 @@
       {
         "Name": "type",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.DepositController",
+    "Method": "TransferMoneyFromDeposit",
+    "RelativePath": "Deposit/TransferMoneyFromDeposit/{bankRecordId}/{clientId}/{depositId}/{sum}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bankRecordId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "depositId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "sum",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.DepositController",
+    "Method": "TransferMoneyOnDeposit",
+    "RelativePath": "Deposit/TransferMoneyOnDeposit/{bankRecordId}/{clientId}/{depositId}/{sum}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bankRecordId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "depositId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "sum",
+        "Type": "System.Decimal",
         "IsRequired": true
       }
     ],

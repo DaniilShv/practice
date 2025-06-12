@@ -1,4 +1,5 @@
 ﻿using BankApi.Domain;
+using BankApi.Domain.DTOs;
 using BankApi.Domain.Enums;
 using BankApi.Infrastructure.Interfaces;
 using BankApi.Service.Interfaces;
@@ -26,6 +27,52 @@ namespace BankApi.Service
             };
 
             await _clientDepositsRepository.CreateDepositAsync(deposit, token);
+        }
+
+        public async Task<List<ClientDeposit>> GetByDateAccuralAsync(DateTime date, CancellationToken token)
+        {
+            return await _clientDepositsRepository.GetByDateAccuralAsync(date, token);
+        }
+
+        public async Task TransferMoneyFromDepositAsync(Guid bankRecordId, Guid clientId, Guid depositId, decimal sum, CancellationToken token)
+        {
+            var transferMoneyDto = new TransferMoneyDepositDto
+            {
+                BankRecordId = bankRecordId,
+                ClientId = clientId,
+                DepositId = depositId,
+                Sum = sum
+            };
+
+            await _clientDepositsRepository.TransferMoneyFromDeposit(transferMoneyDto, token);
+        }
+
+        public async Task TransferMoneyOnDepositAsync(Guid bankRecordId, Guid clientId, Guid depositId, 
+            decimal sum, CancellationToken token)
+        {
+            var transferMoneyDto = new TransferMoneyDepositDto
+            {
+                BankRecordId = bankRecordId,
+                ClientId = clientId,
+                DepositId = depositId,
+                Sum = sum
+            };
+
+            await _clientDepositsRepository.TransferMoneyOnDeposit(transferMoneyDto, token);
+        }
+
+        public async Task UpdateTotalByKeyAsync(Guid clientId, Guid depositId, DateTime dt, decimal total, 
+            CancellationToken token)
+        {
+            var deposit = new ClientDeposit
+            {
+                ClientId = clientId,
+                DepositId = depositId,
+                Total = total,
+                DateAccrualPercent = dt
+            };
+
+            await _clientDepositsRepository.UpdateTotalByKeyAsync(deposit, token);
         }
     }
 }

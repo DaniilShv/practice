@@ -1,3 +1,4 @@
+using BankApi.BackgroundServices;
 using BankApi.Infrastructure.Extensions;
 using BankApi.Middlewares;
 using BankApi.Service.Extensions;
@@ -11,6 +12,8 @@ builder.Services.AddDatabase(builder.Configuration);
 builder.Services.AddRepository();
 
 builder.Services.AddServices();
+
+//builder.Services.AddHostedService<DepositBackgroundService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

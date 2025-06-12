@@ -58,6 +58,102 @@
         }
       }
     },
+    "/BankRecords/CreateBankRecord/{clientId}/{bankBranchId}": {
+      "post": {
+        "tags": [
+          "BankRecords"
+        ],
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "bankBranchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/BankRecords/DepositMoneyOnRecord/{bankRecordId}/{total}": {
+      "put": {
+        "tags": [
+          "BankRecords"
+        ],
+        "parameters": [
+          {
+            "name": "bankRecordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "total",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/BankRecords/WithdrawalMoneyOnRecord/{bankRecordId}/{sum}": {
+      "put": {
+        "tags": [
+          "BankRecords"
+        ],
+        "parameters": [
+          {
+            "name": "bankRecordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "sum",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Cards/CreateBankCard/{bankRecordId}": {
       "post": {
         "tags": [
@@ -71,6 +167,43 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Cards/PayCard": {
+      "put": {
+        "tags": [
+          "Cards"
+        ],
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "sum",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "nameSeller",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -153,10 +286,108 @@
         }
       }
     },
-    "/Deposite/CreateDeposit/{clientId}/{depositId}/{total}/{dist}/{percent}/{type}": {
+    "/Client/GetClientBankRecordsAsync/{clientId}": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BankRecordDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BankRecordDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BankRecordDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Client/GetClientBankCards/{bankRecordId}": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "parameters": [
+          {
+            "name": "bankRecordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BankCardDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BankCardDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BankCardDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Deposit/CreateDeposit/{clientId}/{depositId}/{total}/{dist}/{percent}/{type}": {
       "post": {
         "tags": [
-          "Deposite"
+          "Deposit"
         ],
         "parameters": [
           {
@@ -220,7 +451,142 @@
           }
         }
       }
+    },
+    "/Deposit/TransferMoneyOnDeposit/{bankRecordId}/{clientId}/{depositId}/{sum}": {
+      "put": {
+        "tags": [
+          "Deposit"
+        ],
+        "parameters": [
+          {
+            "name": "bankRecordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "depositId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "sum",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Deposit/TransferMoneyFromDeposit/{bankRecordId}/{clientId}/{depositId}/{sum}": {
+      "put": {
+        "tags": [
+          "Deposit"
+        ],
+        "parameters": [
+          {
+            "name": "bankRecordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "depositId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "sum",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "BankCardDto": {
+        "type": "object",
+        "properties": {
+          "cardNumber": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cvvCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BankRecordDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "total": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }
