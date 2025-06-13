@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Data;
+using System.Net;
 using System.Text.Json;
 
 namespace BankApi.Middlewares
@@ -21,6 +22,14 @@ namespace BankApi.Middlewares
             try
             {
                 await _next(context);
+            }
+            catch (DataException exc)
+            {
+                await ExceptionHandlerAsync(exc, context, HttpStatusCode.NotFound);
+            }
+            catch (ArgumentNullException exc)
+            {
+                await ExceptionHandlerAsync(exc, context, HttpStatusCode.BadRequest);
             }
             catch (Exception exc)
             {

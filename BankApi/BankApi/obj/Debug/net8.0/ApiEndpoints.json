@@ -29,7 +29,7 @@
   {
     "ContainingType": "BankApi.Controllers.BankBranchController",
     "Method": "CreateLocation",
-    "RelativePath": "api/{v}/BankBranch/CreateLocation/{name}",
+    "RelativePath": "api/{v}/BankBranch/CreateBankBranchLocation/{name}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -114,7 +114,7 @@
   {
     "ContainingType": "BankApi.Controllers.BankRecordsController",
     "Method": "CreateBankRecord",
-    "RelativePath": "api/{v}/BankRecords/CreateBankRecord/{clientId}/{bankBranchId}",
+    "RelativePath": "api/{v}/BankRecords/CreateBankRecord",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -126,16 +126,6 @@
       },
       {
         "Name": "v",
-        "Type": "",
-        "IsRequired": true
-      },
-      {
-        "Name": "clientId",
-        "Type": "",
-        "IsRequired": true
-      },
-      {
-        "Name": "bankBranchId",
         "Type": "",
         "IsRequired": true
       }

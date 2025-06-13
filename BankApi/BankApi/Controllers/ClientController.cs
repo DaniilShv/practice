@@ -12,18 +12,21 @@ namespace BankApi.Controllers
         ITokenService _tokenService) : ControllerBase
     {
         [HttpPost("CreateClient")]
+        [Authorize(Policy = "Employee")]
         public async Task CreateClient([FromBody] ClientCreateDto dto)
         {
             await _clientService.CreateClientAsync(dto, HttpContext.RequestAborted);
         }
 
         [HttpGet("GetClientBankRecords/{clientId}")]
+        [Authorize(Policy = "User")]
         public async Task<List<BankRecordDto>> GetClientBankRecords(Guid clientId)
         {
             return await _clientService.GetBankRecordsAsync(clientId, HttpContext.RequestAborted);
         }
 
         [HttpGet("GetClientBankCards/{bankRecordId}")]
+        [Authorize(Policy = "User")]
         public async Task<List<BankCardShowDto>> GetClientBankCards(Guid bankRecordId)
         {
             return await _clientService.GetAllBankCardsAsync(bankRecordId, HttpContext.RequestAborted);
@@ -61,7 +64,7 @@ namespace BankApi.Controllers
 
             return Ok();
         }
-#if DEBUG
+
         [HttpGet("test")]
         [Authorize(Policy = "User")]
         public async Task<IActionResult> Test()
@@ -76,5 +79,4 @@ namespace BankApi.Controllers
             return Ok();
         }
     }
-#endif
 }

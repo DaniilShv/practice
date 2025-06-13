@@ -49,13 +49,24 @@ namespace BankApi.Service.Extensions
             {
                 options.AddPolicy("User", policy =>
                 {
-                    policy.RequireClaim("ClientStatus");
+                    policy.RequireClaim("BankUserStatus");
                 });
 
                 options.AddPolicy("UserDepositCredit", policy =>
                 {
-                    policy.RequireClaim("ClientStatus", "ElderUser");
+                    policy.RequireClaim("BankUserStatus", "ElderUser");
                 });
+
+                options.AddPolicy("Employee", policy =>
+                {
+                    policy.RequireClaim("EmployeeStatus");
+                });
+
+                options.AddPolicy("Manager", policy =>
+                {
+                    policy.RequireClaim("EmployeeStatus", "Manager");
+                });
+
             });
 
             services.AddScoped<ITokenService, JwtTokenService>();

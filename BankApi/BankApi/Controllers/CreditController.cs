@@ -1,5 +1,6 @@
 ﻿using BankApi.Domain.DTOs;
 using BankApi.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApi.Controllers
@@ -10,12 +11,14 @@ namespace BankApi.Controllers
     public class CreditController(IClientCreditService _clientCreditService) : ControllerBase
     {
         [HttpPost("CreateCredit")]
+        [Authorize(Policy = "UserDepositCredit")]
         public async Task CreateCredit([FromBody] ClientCreditCreateDto credit)
         {
             await _clientCreditService.CreateCreditAsync(credit, HttpContext.RequestAborted);
         }
 
         [HttpDelete("RemoveCredit")]
+        [Authorize(Policy = "UserDepositCredit")]
         public async Task RemoveCredit([FromBody] ClientCreditRemoveDto credit)
         {
             await _clientCreditService.RemoveCreditAsync(credit, HttpContext.RequestAborted);

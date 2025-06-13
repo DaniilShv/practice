@@ -30,7 +30,9 @@ namespace BankApi.Service
 
         public async Task<List<ClientDeposit>> GetByDateAccuralAsync(DateTime date, CancellationToken token)
         {
-            return await _clientDepositsRepository.GetByDateAccuralAsync(date, token);
+            var deposit = await _clientDepositsRepository.GetByDateAccuralAsync(date, token);
+
+            return deposit;
         }
 
         public async Task TransferMoneyFromDepositAsync(TransferMoneyDepositDto dto, CancellationToken token)

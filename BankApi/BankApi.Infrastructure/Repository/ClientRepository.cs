@@ -39,7 +39,9 @@ namespace BankApi.Infrastructure.Repository
 
         public async Task<Client> GetById(Client entity, CancellationToken token)
         {
-            return await _context.Clients.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+            var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+
+            return client;
         }
 
         public async Task<Client> GetByRefreshTokenAsync(string refreshToken, CancellationToken token)

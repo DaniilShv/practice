@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/{v}/BankBranch/CreateLocation/{name}": {
+    "/api/{v}/BankBranch/CreateBankBranchLocation/{name}": {
       "post": {
         "tags": [
           "BankBranch"
@@ -175,7 +175,7 @@
         }
       }
     },
-    "/api/{v}/BankRecords/CreateBankRecord/{clientId}/{bankBranchId}": {
+    "/api/{v}/BankRecords/CreateBankRecord": {
       "post": {
         "tags": [
           "BankRecords"
@@ -183,22 +183,6 @@
         "parameters": [
           {
             "name": "v",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "clientId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "bankBranchId",
             "in": "path",
             "required": true,
             "schema": {

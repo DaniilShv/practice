@@ -3,6 +3,7 @@ using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
 using BankApi.Service.Interfaces;
 using Identity.PasswordHasher;
+using System.Data;
 using System.Security.Claims;
 
 namespace BankApi.Service
@@ -30,7 +31,9 @@ namespace BankApi.Service
 
         public async Task<List<BankCardShowDto>> GetAllBankCardsAsync(Guid bankRecordId, CancellationToken token)
         {
-            return await _clientRepository.GetAllBankCardsAsync(bankRecordId, token);
+            var list = await _clientRepository.GetAllBankCardsAsync(bankRecordId, token);
+
+            return list;
         }
 
         public async Task<List<BankRecordDto>> GetBankRecordsAsync(Guid clientId, CancellationToken token)
@@ -78,9 +81,9 @@ namespace BankApi.Service
             int age = GetAgeClient(client);
 
             if (age >= 18)
-                claims.Add(new Claim("ClientStatus", "ElderUser"));
+                claims.Add(new Claim("BankUserStatus", "ElderUser"));
             else
-                claims.Add(new Claim("ClientStatus", "AnyUser"));
+                claims.Add(new Claim("BankUserStatus", "AnyUser"));
 
             return claims;
         }
@@ -102,7 +105,12 @@ namespace BankApi.Service
 
         public async Task<Client> GetByRefreshTokenAsync(string refreshToken, CancellationToken token)
         {
-            return await _clientRepository.GetByRefreshTokenAsync(refreshToken, token);
+            var client = await _clientRepository.GetByRefreshTokenAsync(refreshToken, token);
+
+            if (client == null)
+                throw new DataException("Укажите верный refresh Token");
+
+            return client;
         }
     }
 }
