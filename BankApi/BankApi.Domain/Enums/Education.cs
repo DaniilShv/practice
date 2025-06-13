@@ -2,6 +2,8 @@
 {
     public enum Education
     {
-
+        Higher,
+        College,
+        School
     }
 }

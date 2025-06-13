@@ -1,10 +1,13 @@
-﻿using BankApi.Service.Interfaces;
+﻿using BankApi.Domain.DTOs;
+using BankApi.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/{v:apiversion}/[controller]")]
     public class BankBranchController(ILocationService _locationService,
         IBankBranchService _bankBranchService) : ControllerBase
     {
@@ -14,11 +17,10 @@ namespace BankApi.Controllers
             await _locationService.CreateLocationAsync(name, HttpContext.RequestAborted);
         }
 
-        [HttpPost("CreateBankBranch/{locationId}/{adress}")]
-        public async Task CreateBankBranch(Guid locationId, string adress)
+        [HttpPost("CreateBankBranch")]
+        public async Task CreateBankBranch([FromBody] BankBranchCreateDto dto)
         {
-            await _bankBranchService.CreateBankBranchAsync(locationId, 
-                adress, HttpContext.RequestAborted);
+            await _bankBranchService.CreateBankBranchAsync(dto, HttpContext.RequestAborted);
         }
     }
 }

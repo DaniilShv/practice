@@ -1,21 +1,21 @@
-﻿using BankApi.Domain;
-using BankApi.Infrastructure.Interfaces;
+﻿using BankApi.Domain.DTOs;
+using BankApi.Domain.Entities;
+using BankApi.Domain.Interfaces;
 using BankApi.Service.Interfaces;
 
 namespace BankApi.Service
 {
     public class BankBranchService(IBankBranchRepository _bankBranchRepository) : IBankBranchService
     {
-        public async Task CreateBankBranchAsync(Guid locationId, string address, 
-            CancellationToken token)
+        public async Task CreateBankBranchAsync(BankBranchCreateDto dto, CancellationToken token)
         {
             var bank = new BankBranch
             {
-                LocationId = locationId,
-                Adress = address
+                LocationId = dto.LocationId,
+                Adress = dto.Adress
             };
 
-            await _bankBranchRepository.CreateBankBranchAsync(bank, token);
+            await _bankBranchRepository.CreateAsync(bank, token);
         }
     }
 }

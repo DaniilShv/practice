@@ -1,7 +1,9 @@
-﻿namespace BankApi.Service.Interfaces
+﻿using BankApi.Domain.DTOs;
+
+namespace BankApi.Service.Interfaces
 {
     public interface IBankBranchService
     {
-        Task CreateBankBranchAsync(Guid locationId, string address, CancellationToken token);
+        Task CreateBankBranchAsync(BankBranchCreateDto dto, CancellationToken token);
     }
 }

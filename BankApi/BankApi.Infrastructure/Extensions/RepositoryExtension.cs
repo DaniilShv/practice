@@ -1,4 +1,4 @@
-﻿using BankApi.Infrastructure.Interfaces;
+﻿using BankApi.Domain.Interfaces;
 using BankApi.Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +14,8 @@ namespace BankApi.Infrastructure.Extensions
             service.AddScoped<IBankBranchRepository, BankBranchRepository>();
             service.AddScoped<IClientDepositsRepository, ClientDepositsRepository>();
             service.AddScoped<IBankRecordRepository, BankRecordRepository>();
+            service.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            service.AddScoped<IClientCreditRepository, ClientCreditRepository>();
         }
     }
 }

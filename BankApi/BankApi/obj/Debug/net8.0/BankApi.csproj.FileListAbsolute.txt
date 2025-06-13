@@ -144,3 +144,15 @@ C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Domain.pdb
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Service.dll
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\BankApi.Service.pdb
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Identity.PasswordHasher.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\FluentValidation.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\SharpGrip.FluentValidation.AutoValidation.Mvc.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\SharpGrip.FluentValidation.AutoValidation.Shared.dll

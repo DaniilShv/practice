@@ -220,9 +220,6 @@
             "projectReferences": {
               "C:\\practice\\practice\\BankApi\\BankApi.Domain\\BankApi.Domain.csproj": {
                 "projectPath": "C:\\practice\\practice\\BankApi\\BankApi.Domain\\BankApi.Domain.csproj"
-              },
-              "C:\\practice\\practice\\BankApi\\BankApi.Infrastructure\\BankApi.Infrastructure.csproj": {
-                "projectPath": "C:\\practice\\practice\\BankApi\\BankApi.Infrastructure\\BankApi.Infrastructure.csproj"
               }
             }
           }
@@ -243,9 +240,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Identity.PasswordHasher": {
               "target": "Package",
               "version": "[1.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.17, )"
+            },
+            "SharpGrip.FluentValidation.AutoValidation.Mvc": {
+              "target": "Package",
+              "version": "[1.5.0, )"
             }
           },
           "imports": [
@@ -339,6 +348,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

@@ -1,34 +1,30 @@
-﻿using BankApi.Service.Interfaces;
+﻿using BankApi.Domain.DTOs;
+using BankApi.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/{v:apiversion}/[controller]")]
     public class DepositController(IClientDepositsService _clientDepositsService) : ControllerBase
     {
-        [HttpPost("CreateDeposit/{clientId}/{depositId}/{total}/{dist}/{percent}/{type}")]
-        public async Task CreateDeposit(Guid clientId, Guid depositId, decimal total,
-            int dist, double percent, int type)
+        [HttpPost("CreateDeposit")]
+        public async Task CreateDeposit([FromBody] ClientDepositCreateDto dto)
         {
-            await _clientDepositsService.CreateDepositAsync(clientId, depositId, total,
-                dist, percent, type, HttpContext.RequestAborted);
+            await _clientDepositsService.CreateDepositAsync(dto, HttpContext.RequestAborted);
         }
 
-        [HttpPut("TransferMoneyOnDeposit/{bankRecordId}/{clientId}/{depositId}/{sum}")]
-        public async Task TransferMoneyOnDeposit(Guid bankRecordId, Guid clientId, 
-            Guid depositId, decimal sum)
+        [HttpPut("TransferMoneyOnDeposit")]
+        public async Task TransferMoneyOnDeposit([FromBody] TransferMoneyDepositDto dto)
         {
-            await _clientDepositsService.TransferMoneyOnDepositAsync(bankRecordId, clientId,
-                depositId, sum, HttpContext.RequestAborted);
+            await _clientDepositsService.TransferMoneyOnDepositAsync(dto, HttpContext.RequestAborted);
         }
 
-        [HttpPut("TransferMoneyFromDeposit/{bankRecordId}/{clientId}/{depositId}/{sum}")]
-        public async Task TransferMoneyFromDeposit(Guid bankRecordId, Guid clientId,
-            Guid depositId, decimal sum)
+        [HttpPut("TransferMoneyFromDeposit")]
+        public async Task TransferMoneyFromDeposit([FromBody] TransferMoneyDepositDto dto)
         {
-            await _clientDepositsService.TransferMoneyFromDepositAsync(bankRecordId, clientId,
-                depositId, sum, HttpContext.RequestAborted);
+            await _clientDepositsService.TransferMoneyFromDepositAsync(dto, HttpContext.RequestAborted);
         }
     }
 }

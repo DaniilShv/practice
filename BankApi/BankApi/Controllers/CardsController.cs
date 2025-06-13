@@ -1,10 +1,12 @@
-﻿using BankApi.Service.Interfaces;
+﻿using BankApi.Domain.DTOs;
+using BankApi.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/{v:apiversion}/[controller]")]
     public class CardsController(IBankCardService _bankCardService) : ControllerBase
     {
         [HttpPost("CreateBankCard/{bankRecordId}")]
@@ -14,11 +16,10 @@ namespace BankApi.Controllers
         }
 
         [HttpPut("PayCard")]
-        public async Task PayCard([FromQuery]Guid cardId, [FromQuery]decimal sum,
-            [FromQuery]string nameSeller)
+        public async Task PayCard([FromQuery] BankCardPayDto dto, [FromQuery] string nameSeller)
         {
             await _bankCardService
-                .PayCardAsync(cardId, sum, nameSeller, HttpContext.RequestAborted);
+                .PayCardAsync(dto, nameSeller, HttpContext.RequestAborted);
         }
     }
 }

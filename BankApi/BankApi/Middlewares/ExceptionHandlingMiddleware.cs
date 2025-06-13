@@ -1,4 +1,7 @@
-﻿namespace BankApi.Middlewares
+﻿using System.Net;
+using System.Text.Json;
+
+namespace BankApi.Middlewares
 {
     public class ExceptionHandlingMiddleware
     {
@@ -21,8 +24,22 @@
             }
             catch (Exception exc)
             {
-                Console.WriteLine(exc.Message);
+                await ExceptionHandlerAsync(exc, context, HttpStatusCode.InternalServerError);
             }
+        }
+
+        async Task ExceptionHandlerAsync(Exception exc, HttpContext http, HttpStatusCode code)
+        {
+            http.Response.ContentType = "application/json";
+            http.Response.StatusCode = (int)code;
+
+            var message = JsonSerializer.Serialize(new
+            {
+                StatusCode = code,
+                Message = exc.Message
+            });
+
+            await http.Response.WriteAsync(message);
         }
     }
 }

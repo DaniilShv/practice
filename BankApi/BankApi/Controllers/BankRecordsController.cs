@@ -1,28 +1,30 @@
-﻿using BankApi.Service.Interfaces;
+﻿using BankApi.Domain.DTOs;
+using BankApi.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/{v:apiversion}/[controller]")]
     public class BankRecordsController(IBankRecordService _bankRecordService) : ControllerBase
     {
         [HttpPost("CreateBankRecord/{clientId}/{bankBranchId}")]
-        public async Task CreateBankRecord(Guid clientId, Guid bankBranchId)
+        public async Task CreateBankRecord([FromBody] BankRecordCreateDto dto)
         {
-            await _bankRecordService.CreateBankRecordAsync(clientId, bankBranchId, HttpContext.RequestAborted);
+            await _bankRecordService.CreateBankRecordAsync(dto, HttpContext.RequestAborted);
         }
 
-        [HttpPut("DepositMoneyOnRecord/{bankRecordId}/{total}")]
-        public async Task DepositMoneyOnRecord(Guid bankRecordId, decimal total)
+        [HttpPut("DepositMoneyOnRecord")]
+        public async Task DepositMoneyOnRecord([FromBody] DepositBankRecordDto dto)
         {
-            await _bankRecordService.DepositMoneyOnRecord(bankRecordId, total, HttpContext.RequestAborted);
+            await _bankRecordService.DepositMoneyOnRecord(dto, HttpContext.RequestAborted);
         }
 
-        [HttpPut("WithdrawalMoneyOnRecord/{bankRecordId}/{sum}")]
-        public async Task WithdrawalMoneyOnRecord(Guid bankRecordId, decimal sum)
+        [HttpPut("WithdrawalMoneyOnRecord")]
+        public async Task WithdrawalMoneyOnRecord([FromBody] WithdrawalBankRecordDto dto)
         {
-            await _bankRecordService.WithdrawalMoneyOnRecordAsync(bankRecordId, sum, HttpContext.RequestAborted);
+            await _bankRecordService.WithdrawalMoneyOnRecordAsync(dto, HttpContext.RequestAborted);
         }
     }
 }

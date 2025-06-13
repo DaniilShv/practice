@@ -1,20 +1,30 @@
-﻿using BankApi.Domain;
-using BankApi.Domain.DTOs;
-using BankApi.Infrastructure.Interfaces;
+﻿using BankApi.Domain.DTOs;
+using BankApi.Domain.Entities;
+using BankApi.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankApi.Infrastructure.Repository
 {
     internal class BankCardRepository(BankDbContext _context) : IBankCardRepository
     {
-        public async Task CreateBankCardAsync(BankCard card, CancellationToken token)
+        public async Task CreateAsync(BankCard card, CancellationToken token)
         {
             await _context.BankCards.AddAsync(card, token);
 
             await _context.SaveChangesAsync(token);
         }
 
-        public async Task PayCardAsync(PayCardDto cardDto, PaymentHistory payment,
+        public async Task<List<BankCard>> GetAllAsync(CancellationToken token)
+        {
+            return await _context.BankCards.ToListAsync(token);
+        }
+
+        public async Task<BankCard> GetById(BankCard entity, CancellationToken token)
+        {
+            return await _context.BankCards.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+        }
+
+        public async Task PayCardAsync(BankCardPayDto cardDto, PaymentHistory payment,
             CancellationToken token)
         {
             var card = await _context.BankCards
@@ -38,6 +48,20 @@ namespace BankApi.Infrastructure.Repository
                     await _context.SaveChangesAsync(token);
                 }
             }
+        }
+
+        public async Task RemoveAsync(BankCard entity, CancellationToken token)
+        {
+            _context.BankCards.Remove(entity);
+
+            await _context.SaveChangesAsync(token);
+        }
+
+        public async Task UpdateAsync(BankCard entity, CancellationToken token)
+        {
+            _context.BankCards.Update(entity);
+
+            await _context.SaveChangesAsync(token);
         }
     }
 }

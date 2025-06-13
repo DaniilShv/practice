@@ -1,4 +1,4 @@
-﻿using BankApi.Domain;
+﻿using BankApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

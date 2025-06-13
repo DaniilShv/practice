@@ -1,16 +1,22 @@
 ﻿using BankApi.Domain;
 using BankApi.Domain.DTOs;
+using BankApi.Domain.Entities;
+using System.Security.Claims;
 
 namespace BankApi.Service.Interfaces
 {
     public interface IClientService
     {
-        Task CreateClientAsync(string surname, string name, string patronymic,
-            ushort serialPassport, uint numberPassport, 
-            string login, string password, CancellationToken token);
+        Task CreateClientAsync(ClientCreateDto dto, CancellationToken token);
 
         Task<List<BankRecordDto>> GetBankRecordsAsync(Guid clientId, CancellationToken token);
 
-        Task<List<BankCardDto>> GetAllBankCardsAsync(Guid bankRecordId, CancellationToken token);
+        Task<List<BankCardShowDto>> GetAllBankCardsAsync(Guid bankRecordId, CancellationToken token);
+
+        Task<ClientShowDto> LoginClientAsync(LoginDto dto, CancellationToken token);
+
+        List<Claim> GetClaimClient(ClientShowDto client);
+
+        Task<Client> GetByRefreshTokenAsync(string refreshToken, CancellationToken token);
     }
 }

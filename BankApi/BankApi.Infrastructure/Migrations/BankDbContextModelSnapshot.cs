@@ -22,7 +22,7 @@ namespace BankApi.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BankApi.Domain.BankBranch", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.BankBranch", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("BankBranches");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.BankCard", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.BankCard", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +67,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("BankCards");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.BankRecord", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.BankRecord", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -91,11 +91,14 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("BankRecords");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Client", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Client", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("DateBirth")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Login")
                         .IsRequired()
@@ -115,6 +118,12 @@ namespace BankApi.Infrastructure.Migrations
                     b.Property<string>("Patronymic")
                         .HasColumnType("text");
 
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("SerialPassport")
                         .HasColumnType("integer");
 
@@ -127,7 +136,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.ClientCredit", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.ClientCredit", b =>
                 {
                     b.Property<Guid>("ClientId")
                         .HasColumnType("uuid");
@@ -160,7 +169,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("ClientCredits");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.ClientDeposit", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.ClientDeposit", b =>
                 {
                     b.Property<Guid>("ClientId")
                         .HasColumnType("uuid");
@@ -193,7 +202,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("ClientDeposits");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Credit", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Credit", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -208,7 +217,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("Credits");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Deposit", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Deposit", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -223,7 +232,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("Deposits");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Employee", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Employee", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -260,6 +269,12 @@ namespace BankApi.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<decimal>("Salary")
                         .HasColumnType("numeric");
 
@@ -274,7 +289,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Location", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Location", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -289,7 +304,7 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.PaymentHistory", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.PaymentHistory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -318,9 +333,9 @@ namespace BankApi.Infrastructure.Migrations
                     b.ToTable("PaymentHistories");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.BankBranch", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.BankBranch", b =>
                 {
-                    b.HasOne("BankApi.Domain.Location", "Location")
+                    b.HasOne("BankApi.Domain.Entities.Location", "Location")
                         .WithMany("BankBranches")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -329,9 +344,9 @@ namespace BankApi.Infrastructure.Migrations
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.BankCard", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.BankCard", b =>
                 {
-                    b.HasOne("BankApi.Domain.BankRecord", "BankRecord")
+                    b.HasOne("BankApi.Domain.Entities.BankRecord", "BankRecord")
                         .WithMany("BankCards")
                         .HasForeignKey("BankRecordId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -340,15 +355,15 @@ namespace BankApi.Infrastructure.Migrations
                     b.Navigation("BankRecord");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.BankRecord", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.BankRecord", b =>
                 {
-                    b.HasOne("BankApi.Domain.BankBranch", "BankBranch")
+                    b.HasOne("BankApi.Domain.Entities.BankBranch", "BankBranch")
                         .WithMany("BankRecords")
                         .HasForeignKey("BankBranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BankApi.Domain.Client", "Client")
+                    b.HasOne("BankApi.Domain.Entities.Client", "Client")
                         .WithMany("BankRecords")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -359,15 +374,15 @@ namespace BankApi.Infrastructure.Migrations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.ClientCredit", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.ClientCredit", b =>
                 {
-                    b.HasOne("BankApi.Domain.Client", "Client")
+                    b.HasOne("BankApi.Domain.Entities.Client", "Client")
                         .WithMany("ClientCredits")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BankApi.Domain.Credit", "Credit")
+                    b.HasOne("BankApi.Domain.Entities.Credit", "Credit")
                         .WithMany("ClientCredits")
                         .HasForeignKey("CreditId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -378,15 +393,15 @@ namespace BankApi.Infrastructure.Migrations
                     b.Navigation("Credit");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.ClientDeposit", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.ClientDeposit", b =>
                 {
-                    b.HasOne("BankApi.Domain.Client", "Client")
+                    b.HasOne("BankApi.Domain.Entities.Client", "Client")
                         .WithMany("ClientDeposits")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BankApi.Domain.Deposit", "Deposit")
+                    b.HasOne("BankApi.Domain.Entities.Deposit", "Deposit")
                         .WithMany("ClientDeposits")
                         .HasForeignKey("DepositId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -397,9 +412,9 @@ namespace BankApi.Infrastructure.Migrations
                     b.Navigation("Deposit");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Employee", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Employee", b =>
                 {
-                    b.HasOne("BankApi.Domain.BankBranch", "BankBranch")
+                    b.HasOne("BankApi.Domain.Entities.BankBranch", "BankBranch")
                         .WithMany("Employees")
                         .HasForeignKey("BankBranchId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -408,9 +423,9 @@ namespace BankApi.Infrastructure.Migrations
                     b.Navigation("BankBranch");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.PaymentHistory", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.PaymentHistory", b =>
                 {
-                    b.HasOne("BankApi.Domain.BankRecord", "BankRecord")
+                    b.HasOne("BankApi.Domain.Entities.BankRecord", "BankRecord")
                         .WithMany("PaymentHistories")
                         .HasForeignKey("BankRecordId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -419,21 +434,21 @@ namespace BankApi.Infrastructure.Migrations
                     b.Navigation("BankRecord");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.BankBranch", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.BankBranch", b =>
                 {
                     b.Navigation("BankRecords");
 
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.BankRecord", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.BankRecord", b =>
                 {
                     b.Navigation("BankCards");
 
                     b.Navigation("PaymentHistories");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Client", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Client", b =>
                 {
                     b.Navigation("BankRecords");
 
@@ -442,17 +457,17 @@ namespace BankApi.Infrastructure.Migrations
                     b.Navigation("ClientDeposits");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Credit", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Credit", b =>
                 {
                     b.Navigation("ClientCredits");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Deposit", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Deposit", b =>
                 {
                     b.Navigation("ClientDeposits");
                 });
 
-            modelBuilder.Entity("BankApi.Domain.Location", b =>
+            modelBuilder.Entity("BankApi.Domain.Entities.Location", b =>
                 {
                     b.Navigation("BankBranches");
                 });

@@ -1,6 +1,6 @@
-﻿using BankApi.Domain;
-using BankApi.Domain.DTOs;
-using BankApi.Infrastructure.Interfaces;
+﻿using BankApi.Domain.DTOs;
+using BankApi.Domain.Entities;
+using BankApi.Domain.Interfaces;
 using BankApi.Service.Interfaces;
 
 namespace BankApi.Service
@@ -18,25 +18,19 @@ namespace BankApi.Service
                 BankRecordId = bankRecordId
             };
 
-            await _bankCardRepository.CreateBankCardAsync(card, token);
+            await _bankCardRepository.CreateAsync(card, token);
         }
 
-        public async Task PayCardAsync(Guid cardId, decimal sum, string nameSeller, CancellationToken token)
+        public async Task PayCardAsync(BankCardPayDto dto, string nameSeller, CancellationToken token)
         {
-            var card = new PayCardDto
-            {
-                CardId = cardId,
-                Sum = sum
-            };
-
             var payment = new PaymentHistory
             {
                 Name = nameSeller,
                 Date = DateTime.UtcNow,
-                Total = sum
+                Total = dto.Sum
             };
 
-            await _bankCardRepository.PayCardAsync(card, payment, token);
+            await _bankCardRepository.PayCardAsync(dto, payment, token);
         }
     }
 }

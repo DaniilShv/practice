@@ -1,32 +1,80 @@
 ﻿using BankApi.Domain.DTOs;
 using BankApi.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class ClientController(IClientService _clientService) : ControllerBase
+    [ApiVersion("1.0")]
+    [Route("api/{v:apiversion}/[controller]")]
+    public class ClientController(IClientService _clientService,
+        ITokenService _tokenService) : ControllerBase
     {
-        [HttpPost("CreateClientAsync/{surname}/{name}/{patronymic}/{serialPassport}/{numberPassport}/{login}/{password}")]
-        public async Task CreateClientAsync(string surname, string name, string patronymic,
-            ushort serialPassport, uint numberPassport,
-            string login, string password)
+        [HttpPost("CreateClient")]
+        public async Task CreateClient([FromBody] ClientCreateDto dto)
         {
-            await _clientService.CreateClientAsync(surname, name, patronymic, serialPassport,
-                numberPassport, login, password, HttpContext.RequestAborted);
+            await _clientService.CreateClientAsync(dto, HttpContext.RequestAborted);
         }
 
-        [HttpGet("GetClientBankRecordsAsync/{clientId}")]
-        public async Task<List<BankRecordDto>> GetClientBankRecordsAsync(Guid clientId)
+        [HttpGet("GetClientBankRecords/{clientId}")]
+        public async Task<List<BankRecordDto>> GetClientBankRecords(Guid clientId)
         {
             return await _clientService.GetBankRecordsAsync(clientId, HttpContext.RequestAborted);
         }
 
         [HttpGet("GetClientBankCards/{bankRecordId}")]
-        public async Task<List<BankCardDto>> GetClientBankCards(Guid bankRecordId)
+        public async Task<List<BankCardShowDto>> GetClientBankCards(Guid bankRecordId)
         {
             return await _clientService.GetAllBankCardsAsync(bankRecordId, HttpContext.RequestAborted);
         }
+
+        [HttpPost("LoginClient")]
+        public async Task<ClientShowDto> LoginClient([FromBody] LoginDto dto)
+        {
+            dto.RefreshToken = _tokenService.GenerateRefreshToken();
+
+            var client = await _clientService.LoginClientAsync(dto, HttpContext.RequestAborted);
+
+            var claims = _clientService.GetClaimClient(client);
+
+            var token = _tokenService.GetToken(claims);
+
+            HttpContext.Response.Cookies.Append("tasty_cookie", token);
+
+            return client;
+        }
+
+        [HttpPut("RefreshTokenClient")]
+        public IActionResult RefreshTokenClient([FromBody] TokenDto dto)
+        {
+            var client = _clientService.GetByRefreshTokenAsync(dto.RefreshToken, HttpContext.RequestAborted);
+
+            if (client == null)
+                return BadRequest("Enter correct refresh Token");
+
+            var claims = _tokenService.GetPrincipalFromExpiredToken(dto.Token);
+
+            var token = _tokenService.GetToken(claims.Claims);
+
+            HttpContext.Response.Cookies.Append("tasty_cookie", token);
+
+            return Ok();
+        }
+#if DEBUG
+        [HttpGet("test")]
+        [Authorize(Policy = "User")]
+        public async Task<IActionResult> Test()
+        {
+            return Ok();
+        }
+
+        [HttpGet("test2")]
+        [Authorize(Policy = "UserDepositCredit")]
+        public async Task<IActionResult> TestDeposit()
+        {
+            return Ok();
+        }
     }
+#endif
 }

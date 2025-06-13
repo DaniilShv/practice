@@ -1,5 +1,5 @@
-﻿using BankApi.Domain;
-using BankApi.Infrastructure.Interfaces;
+﻿using BankApi.Domain.Entities;
+using BankApi.Domain.Interfaces;
 using BankApi.Service.Interfaces;
 
 namespace BankApi.Service
@@ -13,7 +13,7 @@ namespace BankApi.Service
                 Name = name
             };
 
-            await _locationRepository.CreateLocationAsync(location, token);
+            await _locationRepository.CreateAsync(location, token);
         }
     }
 }

@@ -2,19 +2,19 @@
   {
     "ContainingType": "BankApi.Controllers.BankBranchController",
     "Method": "CreateBankBranch",
-    "RelativePath": "BankBranch/CreateBankBranch/{locationId}/{adress}",
+    "RelativePath": "api/{v}/BankBranch/CreateBankBranch",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "locationId",
-        "Type": "System.Guid",
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.BankBranchCreateDto",
         "IsRequired": true
       },
       {
-        "Name": "adress",
-        "Type": "System.String",
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -29,7 +29,7 @@
   {
     "ContainingType": "BankApi.Controllers.BankBranchController",
     "Method": "CreateLocation",
-    "RelativePath": "BankBranch/CreateLocation/{name}",
+    "RelativePath": "api/{v}/BankBranch/CreateLocation/{name}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -37,6 +37,11 @@
       {
         "Name": "name",
         "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -49,21 +54,89 @@
     ]
   },
   {
-    "ContainingType": "BankApi.Controllers.BankRecordsController",
-    "Method": "CreateBankRecord",
-    "RelativePath": "BankRecords/CreateBankRecord/{clientId}/{bankBranchId}",
+    "ContainingType": "BankApi.Controllers.BankEmployeeController",
+    "Method": "CreateEmployee",
+    "RelativePath": "api/{v}/BankEmployee/CreateEmployee",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
+        "Name": "employee",
+        "Type": "BankApi.Domain.DTOs.CreateEmployeeDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.BankEmployeeController",
+    "Method": "LoginEmployee",
+    "RelativePath": "api/{v}/BankEmployee/LoginEmployee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.LoginDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BankApi.Domain.DTOs.EmployeeShowDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.BankRecordsController",
+    "Method": "CreateBankRecord",
+    "RelativePath": "api/{v}/BankRecords/CreateBankRecord/{clientId}/{bankBranchId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.BankRecordCreateDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
         "Name": "clientId",
-        "Type": "System.Guid",
+        "Type": "",
         "IsRequired": true
       },
       {
         "Name": "bankBranchId",
-        "Type": "System.Guid",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -78,19 +151,19 @@
   {
     "ContainingType": "BankApi.Controllers.BankRecordsController",
     "Method": "DepositMoneyOnRecord",
-    "RelativePath": "BankRecords/DepositMoneyOnRecord/{bankRecordId}/{total}",
+    "RelativePath": "api/{v}/BankRecords/DepositMoneyOnRecord",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bankRecordId",
-        "Type": "System.Guid",
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.DepositBankRecordDto",
         "IsRequired": true
       },
       {
-        "Name": "total",
-        "Type": "System.Decimal",
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -105,19 +178,19 @@
   {
     "ContainingType": "BankApi.Controllers.BankRecordsController",
     "Method": "WithdrawalMoneyOnRecord",
-    "RelativePath": "BankRecords/WithdrawalMoneyOnRecord/{bankRecordId}/{sum}",
+    "RelativePath": "api/{v}/BankRecords/WithdrawalMoneyOnRecord",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bankRecordId",
-        "Type": "System.Guid",
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.WithdrawalBankRecordDto",
         "IsRequired": true
       },
       {
-        "Name": "sum",
-        "Type": "System.Decimal",
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -132,7 +205,7 @@
   {
     "ContainingType": "BankApi.Controllers.CardsController",
     "Method": "CreateBankCard",
-    "RelativePath": "Cards/CreateBankCard/{bankRecordId}",
+    "RelativePath": "api/{v}/Cards/CreateBankCard/{bankRecordId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -140,6 +213,11 @@
       {
         "Name": "bankRecordId",
         "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -154,18 +232,18 @@
   {
     "ContainingType": "BankApi.Controllers.CardsController",
     "Method": "PayCard",
-    "RelativePath": "Cards/PayCard",
+    "RelativePath": "api/{v}/Cards/PayCard",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "cardId",
+        "Name": "CardId",
         "Type": "System.Guid",
         "IsRequired": false
       },
       {
-        "Name": "sum",
+        "Name": "Sum",
         "Type": "System.Decimal",
         "IsRequired": false
       },
@@ -173,6 +251,11 @@
         "Name": "nameSeller",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -185,45 +268,20 @@
   },
   {
     "ContainingType": "BankApi.Controllers.ClientController",
-    "Method": "CreateClientAsync",
-    "RelativePath": "Client/CreateClientAsync/{surname}/{name}/{patronymic}/{serialPassport}/{numberPassport}/{login}/{password}",
+    "Method": "CreateClient",
+    "RelativePath": "api/{v}/Client/CreateClient",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "surname",
-        "Type": "System.String",
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.ClientCreateDto",
         "IsRequired": true
       },
       {
-        "Name": "name",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "patronymic",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "serialPassport",
-        "Type": "System.UInt16",
-        "IsRequired": true
-      },
-      {
-        "Name": "numberPassport",
-        "Type": "System.UInt32",
-        "IsRequired": true
-      },
-      {
-        "Name": "login",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "password",
-        "Type": "System.String",
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -238,7 +296,7 @@
   {
     "ContainingType": "BankApi.Controllers.ClientController",
     "Method": "GetClientBankCards",
-    "RelativePath": "Client/GetClientBankCards/{bankRecordId}",
+    "RelativePath": "api/{v}/Client/GetClientBankCards/{bankRecordId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -247,11 +305,16 @@
         "Name": "bankRecordId",
         "Type": "System.Guid",
         "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[BankApi.Domain.DTOs.BankCardDto, BankApi.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[BankApi.Domain.DTOs.BankCardShowDto, BankApi.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -263,8 +326,8 @@
   },
   {
     "ContainingType": "BankApi.Controllers.ClientController",
-    "Method": "GetClientBankRecordsAsync",
-    "RelativePath": "Client/GetClientBankRecordsAsync/{clientId}",
+    "Method": "GetClientBankRecords",
+    "RelativePath": "api/{v}/Client/GetClientBankRecords/{clientId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -272,6 +335,11 @@
       {
         "Name": "clientId",
         "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -288,41 +356,159 @@
     ]
   },
   {
-    "ContainingType": "BankApi.Controllers.DepositController",
-    "Method": "CreateDeposit",
-    "RelativePath": "Deposit/CreateDeposit/{clientId}/{depositId}/{total}/{dist}/{percent}/{type}",
+    "ContainingType": "BankApi.Controllers.ClientController",
+    "Method": "LoginClient",
+    "RelativePath": "api/{v}/Client/LoginClient",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "clientId",
-        "Type": "System.Guid",
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.LoginDto",
         "IsRequired": true
       },
       {
-        "Name": "depositId",
-        "Type": "System.Guid",
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BankApi.Domain.DTOs.ClientShowDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.ClientController",
+    "Method": "RefreshTokenClient",
+    "RelativePath": "api/{v}/Client/RefreshTokenClient",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.TokenDto",
         "IsRequired": true
       },
       {
-        "Name": "total",
-        "Type": "System.Decimal",
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankApi.Controllers.ClientController",
+    "Method": "Test",
+    "RelativePath": "api/{v}/Client/test",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankApi.Controllers.ClientController",
+    "Method": "TestDeposit",
+    "RelativePath": "api/{v}/Client/test2",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankApi.Controllers.CreditController",
+    "Method": "CreateCredit",
+    "RelativePath": "api/{v}/Credit/CreateCredit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "credit",
+        "Type": "BankApi.Domain.DTOs.ClientCreditCreateDto",
         "IsRequired": true
       },
       {
-        "Name": "dist",
-        "Type": "System.Int32",
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.CreditController",
+    "Method": "RemoveCredit",
+    "RelativePath": "api/{v}/Credit/RemoveCredit",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "credit",
+        "Type": "BankApi.Domain.DTOs.ClientCreditRemoveDto",
         "IsRequired": true
       },
       {
-        "Name": "percent",
-        "Type": "System.Double",
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.DepositController",
+    "Method": "CreateDeposit",
+    "RelativePath": "api/{v}/Deposit/CreateDeposit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.ClientDepositCreateDto",
         "IsRequired": true
       },
       {
-        "Name": "type",
-        "Type": "System.Int32",
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -337,29 +523,19 @@
   {
     "ContainingType": "BankApi.Controllers.DepositController",
     "Method": "TransferMoneyFromDeposit",
-    "RelativePath": "Deposit/TransferMoneyFromDeposit/{bankRecordId}/{clientId}/{depositId}/{sum}",
+    "RelativePath": "api/{v}/Deposit/TransferMoneyFromDeposit",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bankRecordId",
-        "Type": "System.Guid",
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.TransferMoneyDepositDto",
         "IsRequired": true
       },
       {
-        "Name": "clientId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "depositId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "sum",
-        "Type": "System.Decimal",
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -374,29 +550,19 @@
   {
     "ContainingType": "BankApi.Controllers.DepositController",
     "Method": "TransferMoneyOnDeposit",
-    "RelativePath": "Deposit/TransferMoneyOnDeposit/{bankRecordId}/{clientId}/{depositId}/{sum}",
+    "RelativePath": "api/{v}/Deposit/TransferMoneyOnDeposit",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bankRecordId",
-        "Type": "System.Guid",
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.TransferMoneyDepositDto",
         "IsRequired": true
       },
       {
-        "Name": "clientId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "depositId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "sum",
-        "Type": "System.Decimal",
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],

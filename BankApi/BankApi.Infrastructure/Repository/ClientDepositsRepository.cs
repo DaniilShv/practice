@@ -1,23 +1,42 @@
-﻿using BankApi.Domain;
-using BankApi.Domain.DTOs;
-using BankApi.Infrastructure.Interfaces;
+﻿using BankApi.Domain.DTOs;
+using BankApi.Domain.Entities;
+using BankApi.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankApi.Infrastructure.Repository
 {
     public class ClientDepositsRepository(BankDbContext _context) : IClientDepositsRepository
     {
-        public async Task CreateDepositAsync(ClientDeposit deposit, CancellationToken token)
+        public async Task CreateAsync(ClientDeposit deposit, CancellationToken token)
         {
             await _context.ClientDeposits.AddAsync(deposit, token);
 
             await _context.SaveChangesAsync(token);
         }
 
+        public async Task<List<ClientDeposit>> GetAllAsync(CancellationToken token)
+        {
+            return await _context.ClientDeposits.ToListAsync(token);
+        }
+
         public async Task<List<ClientDeposit>> GetByDateAccuralAsync(DateTime date, CancellationToken token)
         {
             return await _context.ClientDeposits.Where(x => x.DateAccrualPercent.Date == date.Date)
                 .ToListAsync(token);
+        }
+
+        public async Task<ClientDeposit> GetById(ClientDeposit entity, CancellationToken token)
+        {
+            return await _context.ClientDeposits
+                .FirstOrDefaultAsync(x => 
+                x.ClientId == entity.ClientId && x.DepositId == entity.DepositId, token);
+        }
+
+        public async Task RemoveAsync(ClientDeposit entity, CancellationToken token)
+        {
+            _context.ClientDeposits.Remove(entity);
+
+            await _context.SaveChangesAsync(token);
         }
 
         public async Task TransferMoneyFromDeposit(TransferMoneyDepositDto dto, CancellationToken token)
@@ -71,6 +90,13 @@ namespace BankApi.Infrastructure.Repository
             }
             else
                 throw new ArgumentNullException("Банковский счет не существует");
+        }
+
+        public async Task UpdateAsync(ClientDeposit entity, CancellationToken token)
+        {
+            _context.ClientDeposits.Update(entity);
+
+            await _context.SaveChangesAsync(token);
         }
 
         public async Task UpdateTotalByKeyAsync(ClientDeposit deposit, CancellationToken token)

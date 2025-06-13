@@ -1,12 +1,12 @@
-﻿using BankApi.Domain;
-using BankApi.Infrastructure.Interfaces;
+﻿using BankApi.Domain.Entities;
+using BankApi.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankApi.Infrastructure.Repository
 {
     public class BankRecordRepository(BankDbContext _context) : IBankRecordRepository
     {
-        public async Task CreateBankRecordAsync(BankRecord record, CancellationToken token)
+        public async Task CreateAsync(BankRecord record, CancellationToken token)
         {
             await _context.AddAsync(record, token);
 
@@ -21,6 +21,30 @@ namespace BankApi.Infrastructure.Repository
                 bankRecord.Total = record.Total;
 
             _context.BankRecords.Update(bankRecord);
+
+            await _context.SaveChangesAsync(token);
+        }
+
+        public async Task<List<BankRecord>> GetAllAsync(CancellationToken token)
+        {
+            return await _context.BankRecords.ToListAsync(token);
+        }
+
+        public async Task<BankRecord> GetById(BankRecord entity, CancellationToken token)
+        {
+            return await _context.BankRecords.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+        }
+
+        public async Task RemoveAsync(BankRecord entity, CancellationToken token)
+        {
+            _context.BankRecords.Remove(entity);
+
+            await _context.SaveChangesAsync(token);
+        }
+
+        public async Task UpdateAsync(BankRecord entity, CancellationToken token)
+        {
+            _context.BankRecords.Update(entity);
 
             await _context.SaveChangesAsync(token);
         }

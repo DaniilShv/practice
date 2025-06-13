@@ -13,6 +13,8 @@ namespace BankApi.Service.Extensions
             services.AddScoped<IBankBranchService, BankBranchService>();
             services.AddScoped<IClientDepositsService, ClientDepositsService>();
             services.AddScoped<IBankRecordService, BankRecordService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IClientCreditService, ClientCreditService>();
         }
     }
 }
