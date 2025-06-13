@@ -64,19 +64,5 @@ namespace BankApi.Controllers
 
             return Ok();
         }
-
-        [HttpGet("test")]
-        [Authorize(Policy = "User")]
-        public async Task<IActionResult> Test()
-        {
-            return Ok();
-        }
-
-        [HttpGet("test2")]
-        [Authorize(Policy = "UserDepositCredit")]
-        public async Task<IActionResult> TestDeposit()
-        {
-            return Ok();
-        }
     }
 }
