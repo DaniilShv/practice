@@ -56,9 +56,11 @@ namespace BankApi.Infrastructure.Repository
             return client;
         }
 
-        public async Task RemoveAsync(Client entity, CancellationToken token)
+        public async Task RemoveAsync(Guid id, CancellationToken token)
         {
-            _context.Clients.Remove(entity);
+            await _context.Clients
+                .Where(x => x.Id == id)
+                .ExecuteDeleteAsync(token);
 
             await _context.SaveChangesAsync(token);
         }

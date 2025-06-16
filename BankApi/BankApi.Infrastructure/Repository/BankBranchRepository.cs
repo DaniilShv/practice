@@ -24,9 +24,11 @@ namespace BankApi.Infrastructure.Repository
             return await _context.BankBranches.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
         }
 
-        public async Task RemoveAsync(BankBranch entity, CancellationToken token)
+        public async Task RemoveAsync(Guid id, CancellationToken token)
         {
-            _context.BankBranches.Remove(entity);
+            await _context.BankBranches
+                .Where(x => x.Id == id)
+                .ExecuteDeleteAsync(token);
 
             await _context.SaveChangesAsync(token);
         }

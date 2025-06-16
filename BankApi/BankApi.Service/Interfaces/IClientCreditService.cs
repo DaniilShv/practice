@@ -6,6 +6,6 @@ namespace BankApi.Service.Interfaces
     {
         Task CreateCreditAsync(ClientCreditCreateDto dto, CancellationToken token);
 
-        Task RemoveCreditAsync(ClientCreditRemoveDto dto, CancellationToken token);
+        Task RemoveCreditAsync(Guid clientId, Guid creditId, CancellationToken token);
     }
 }

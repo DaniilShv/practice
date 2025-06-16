@@ -398,38 +398,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BankApi.Controllers.ClientController",
-    "Method": "Test",
-    "RelativePath": "api/{v}/Client/test",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "v",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BankApi.Controllers.ClientController",
-    "Method": "TestDeposit",
-    "RelativePath": "api/{v}/Client/test2",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "v",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "BankApi.Controllers.CreditController",
     "Method": "CreateCredit",
     "RelativePath": "api/{v}/Credit/CreateCredit",

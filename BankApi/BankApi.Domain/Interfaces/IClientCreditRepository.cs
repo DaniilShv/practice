@@ -2,8 +2,16 @@
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface IClientCreditRepository : IRepository<ClientCredit>
+    public interface IClientCreditRepository
     {
+        Task<List<ClientCredit>> GetAllAsync(CancellationToken token);
 
+        Task<ClientCredit> GetById(ClientCredit entity, CancellationToken token);
+
+        Task CreateAsync(ClientCredit entity, CancellationToken token);
+
+        Task UpdateAsync(ClientCredit entity, CancellationToken token);
+
+        Task RemoveAsync(Guid clientId, Guid creditId, CancellationToken token);
     }
 }

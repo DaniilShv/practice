@@ -1,4 +1,5 @@
 ﻿using BankApi.Service.Interfaces;
+using BankApi.Service.MappingProfiles;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BankApi.Service.Extensions
@@ -15,6 +16,7 @@ namespace BankApi.Service.Extensions
             services.AddScoped<IBankRecordService, BankRecordService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IClientCreditService, ClientCreditService>();
+            services.AddAutoMapper(typeof(BankProfile));
         }
     }
 }

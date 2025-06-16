@@ -1,4 +1,5 @@
-﻿using BankApi.Domain.DTOs;
+﻿using AutoMapper;
+using BankApi.Domain.DTOs;
 using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
 using BankApi.Service.Interfaces;
@@ -8,7 +9,8 @@ using System.Security.Claims;
 
 namespace BankApi.Service
 {
-    public class ClientService(IClientRepository _clientRepository) : IClientService
+    public class ClientService(IClientRepository _clientRepository,
+        IMapper _mapper) : IClientService
     {
 
         public async Task CreateClientAsync(ClientCreateDto dto, CancellationToken token)
@@ -56,15 +58,9 @@ namespace BankApi.Service
                 {
                     await _clientRepository.UpdateAsync(client, token);
 
-                    return new ClientShowDto
-                    {
-                        Surname = client.Surname,
-                        Name = client.Name,
-                        Patronymic = client.Patronymic,
-                        DateBirth = client.DateBirth,
-                        NumberPassport = client.NumberPassport,
-                        SerialPassport = client.SerialPassport
-                    };
+                    var clientShowDto = _mapper.Map<ClientShowDto>(client);
+
+                    return clientShowDto;
                 }
                 else
                     throw new Exception("Введите верный пароль");

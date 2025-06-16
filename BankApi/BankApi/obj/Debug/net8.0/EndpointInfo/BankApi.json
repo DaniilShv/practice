@@ -628,50 +628,6 @@
         }
       }
     },
-    "/api/{v}/Client/test": {
-      "get": {
-        "tags": [
-          "Client"
-        ],
-        "parameters": [
-          {
-            "name": "v",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/{v}/Client/test2": {
-      "get": {
-        "tags": [
-          "Client"
-        ],
-        "parameters": [
-          {
-            "name": "v",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/{v}/Credit/CreateCredit": {
       "post": {
         "tags": [

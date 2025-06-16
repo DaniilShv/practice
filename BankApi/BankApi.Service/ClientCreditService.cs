@@ -28,15 +28,10 @@ namespace BankApi.Service
             await _clientCreditRepository.CreateAsync(entity, token);
         }
 
-        public async Task RemoveCreditAsync(ClientCreditRemoveDto dto, CancellationToken token)
+        public async Task RemoveCreditAsync(Guid clientId, Guid creditId, CancellationToken token)
         {
-            var item = new ClientCredit
-            {
-                ClientId = dto.ClientId,
-                CreditId = dto.CreditId
-            };
 
-            await _clientCreditRepository.RemoveAsync(item, token);
+            await _clientCreditRepository.RemoveAsync(clientId, creditId, token);
         }
     }
 }

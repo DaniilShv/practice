@@ -18,16 +18,18 @@ namespace BankApi.Infrastructure.Repository
             return await _context.ClientCredits.ToListAsync(token);
         }
 
-        public Task<ClientCredit> GetById(ClientCredit entity, CancellationToken token)
+        public async Task<ClientCredit> GetById(ClientCredit entity, CancellationToken token)
         {
-            return _context.ClientCredits
+            return await _context.ClientCredits
                 .FirstOrDefaultAsync(x => x.ClientId == entity.ClientId 
                 && x.CreditId == entity.CreditId, token);
         }
 
-        public async Task RemoveAsync(ClientCredit entity, CancellationToken token)
+        public async Task RemoveAsync(Guid clientId, Guid creditId, CancellationToken token)
         {
-            _context.ClientCredits.Remove(entity);
+            await _context.ClientCredits
+                .Where(x => x.CreditId == creditId && x.ClientId == clientId)
+                .ExecuteDeleteAsync(token);
 
             await _context.SaveChangesAsync(token);
         }

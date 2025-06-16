@@ -3,7 +3,7 @@ using BankApi.Domain.Entities;
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface IClientDepositsRepository : IRepository<ClientDeposit>
+    public interface IClientDepositsRepository
     {
         Task<List<ClientDeposit>> GetByDateAccuralAsync(DateTime date, CancellationToken token);
 
@@ -12,5 +12,15 @@ namespace BankApi.Domain.Interfaces
         Task TransferMoneyOnDeposit(TransferMoneyDepositDto dto, CancellationToken token);
 
         Task TransferMoneyFromDeposit(TransferMoneyDepositDto dto, CancellationToken token);
+
+        Task<List<ClientDeposit>> GetAllAsync(CancellationToken token);
+
+        Task<ClientDeposit> GetById(ClientDeposit entity, CancellationToken token);
+
+        Task CreateAsync(ClientDeposit entity, CancellationToken token);
+
+        Task UpdateAsync(ClientDeposit entity, CancellationToken token);
+
+        Task RemoveAsync(Guid clientId, Guid depositId, CancellationToken token);
     }
 }

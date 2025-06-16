@@ -10,6 +10,6 @@
 
         Task UpdateAsync(T entity, CancellationToken token);
 
-        Task RemoveAsync(T entity, CancellationToken token);
+        Task RemoveAsync(Guid id, CancellationToken token);
     }
 }

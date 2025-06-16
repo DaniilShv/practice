@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="5d837650-f036-437e-828c-f63bcc2e01cc" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="98147183-29bc-40af-8197-703f6d261028" name="BankApi">
+      <references>
+        <reference Id="76c2280b-4233-4472-9bff-b4a78be41f49" name="BankApi">
+          <ArtifactNode Label="BankApi" Category="CodeSchema_Project" Id="(Assembly=../BankApi/BankApi.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="ff3f3623-72ad-4ad7-8bdb-8393fef46953" name="BankApi.Domain">
+      <references>
+        <reference Id="42852b14-03ab-4ed5-959d-5a1a8165eea4" name="BankApi.Domain">
+          <ArtifactNode Label="BankApi.Domain" Category="CodeSchema_Project" Id="(Assembly=../BankApi.Domain/BankApi.Domain.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="35ffdd70-3ec4-45b1-8f17-5b3800f2163d" name="BankApi.Infrastructure">
+      <references>
+        <reference Id="45a0d6cc-a0ea-4e7d-a5f0-c68d17107a8b" name="BankApi.Infrastructure">
+          <ArtifactNode Label="BankApi.Infrastructure" Category="CodeSchema_Project" Id="(Assembly=../BankApi.Infrastructure/BankApi.Infrastructure.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="7f3fe233-51e1-48fa-9fc1-c2ca34bb9690" name="BankApi.Service">
+      <references>
+        <reference Id="d8fb0613-ceca-45fa-ae4b-e53b59018ff0" name="BankApi.Service">
+          <ArtifactNode Label="BankApi.Service" Category="CodeSchema_Project" Id="(Assembly=../BankApi.Service/BankApi.Service.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

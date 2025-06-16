@@ -32,9 +32,11 @@ namespace BankApi.Infrastructure.Repository
                 x.ClientId == entity.ClientId && x.DepositId == entity.DepositId, token);
         }
 
-        public async Task RemoveAsync(ClientDeposit entity, CancellationToken token)
+        public async Task RemoveAsync(Guid clientId, Guid depositId, CancellationToken token)
         {
-            _context.ClientDeposits.Remove(entity);
+            await _context.ClientDeposits
+                .Where(x => x.ClientId == clientId && x.DepositId == depositId)
+                .ExecuteDeleteAsync(token);
 
             await _context.SaveChangesAsync(token);
         }

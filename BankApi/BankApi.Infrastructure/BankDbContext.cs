@@ -1,6 +1,6 @@
 ﻿using BankApi.Domain.Entities;
+using BankApi.Infrastructure.DbContextConfigs;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BankApi.Infrastructure
 {
@@ -28,115 +28,6 @@ namespace BankApi.Infrastructure
             modelBuilder.ApplyConfiguration(new ClientCreditConfig());
             modelBuilder.ApplyConfiguration(new ClientDepositeConfig());
             base.OnModelCreating(modelBuilder);
-        }
-    }
-
-    public class BankBranchConfig : IEntityTypeConfiguration<BankBranch>
-    {
-        public void Configure(EntityTypeBuilder<BankBranch> builder)
-        {
-            builder.HasKey(x => x.Id);
-
-            builder.HasMany(x => x.Employees)
-                .WithOne(x => x.BankBranch)
-                .HasForeignKey(x => x.BankBranchId);
-
-            builder.HasMany(x => x.BankRecords)
-                .WithOne(x => x.BankBranch)
-                .HasForeignKey(x => x.BankBranchId);
-        }
-    }
-
-    public class LocationConfig : IEntityTypeConfiguration<Location>
-    {
-        public void Configure(EntityTypeBuilder<Location> builder)
-        {
-            builder.HasKey(x => x.Id);
-
-            builder.HasMany(x => x.BankBranches)
-                .WithOne(x => x.Location)
-                .HasForeignKey(x => x.LocationId);
-        }
-    }
-
-    public class BankRecordConfig : IEntityTypeConfiguration<BankRecord>
-    {
-        public void Configure(EntityTypeBuilder<BankRecord> builder)
-        {
-            builder.HasKey(x => x.Id);
-
-            builder.HasMany(x => x.BankCards)
-                .WithOne(x => x.BankRecord)
-                .HasForeignKey(x => x.BankRecordId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(x => x.PaymentHistories)
-                .WithOne(x => x.BankRecord)
-                .HasForeignKey(x => x.BankRecordId)
-                .OnDelete(DeleteBehavior.Cascade);
-        }
-    }
-
-    public class ClientConfig : IEntityTypeConfiguration<Client>
-    {
-        public void Configure(EntityTypeBuilder<Client> builder)
-        {
-            builder.HasKey(x => x.Id);
-
-            builder.HasMany(x => x.BankRecords)
-                .WithOne(x => x.Client)
-                .HasForeignKey(x => x.ClientId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(x => x.ClientCredits)
-                .WithOne(x => x.Client)
-                .HasForeignKey(x => x.ClientId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(x => x.ClientDeposits)
-                .WithOne(x => x.Client)
-                .HasForeignKey(x => x.ClientId)
-                .OnDelete(DeleteBehavior.Cascade);
-        }
-    }
-
-    public class DepositConfig : IEntityTypeConfiguration<Deposit>
-    {
-        public void Configure(EntityTypeBuilder<Deposit> builder)
-        {
-            builder.HasKey(x => x.Id);
-
-            builder.HasMany(x => x.ClientDeposits)
-                .WithOne(x => x.Deposit)
-                .HasForeignKey(x => x.DepositId);
-        }
-    }
-
-    public class CreditConfig : IEntityTypeConfiguration<Credit>
-    {
-        public void Configure(EntityTypeBuilder<Credit> builder)
-        {
-            builder.HasKey(x => x.Id);
-
-            builder.HasMany(x => x.ClientCredits)
-                .WithOne(x => x.Credit)
-                .HasForeignKey(x => x.CreditId);
-        }
-    }
-
-    public class ClientCreditConfig : IEntityTypeConfiguration<ClientCredit>
-    {
-        public void Configure(EntityTypeBuilder<ClientCredit> builder)
-        {
-            builder.HasKey(x => new { x.ClientId, x.CreditId });
-        }
-    }
-
-    public class ClientDepositeConfig : IEntityTypeConfiguration<ClientDeposit>
-    {
-        public void Configure(EntityTypeBuilder<ClientDeposit> builder)
-        {
-            builder.HasKey(x => new { x.ClientId, x.DepositId });
         }
     }
 }

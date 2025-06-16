@@ -1,4 +1,5 @@
-﻿using BankApi.Domain.DTOs;
+﻿using AutoMapper;
+using BankApi.Domain.DTOs;
 using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
 using BankApi.Service.Interfaces;
@@ -6,7 +7,8 @@ using Identity.PasswordHasher;
 
 namespace BankApi.Service
 {
-    public class EmployeeService(IEmployeeRepository _employeeRepository) : IEmployeeService
+    public class EmployeeService(IEmployeeRepository _employeeRepository,
+        IMapper _mapper) : IEmployeeService
     {
         public async Task CreateEmployeeAsync(CreateEmployeeDto employee, CancellationToken token)
         {
@@ -39,14 +41,11 @@ namespace BankApi.Service
             if (employee != null)
             {
                 if (hasher.VerifyHashedPassword(employee.PasswordHash, dto.Password))
-                    return new EmployeeShowDto
-                    {
-                        Surname = employee.Surname,
-                        Name = employee.Name,
-                        Patronymic = employee.Patronymic,
-                        Position = employee.Position,
-                        DateBirth = employee.DateBirth
-                    };
+                {
+                    var employeeShowDto = _mapper.Map<EmployeeShowDto>(employee);
+
+                    return employeeShowDto;
+                }
                 else
                     throw new Exception("Введите верный пароль");
             }

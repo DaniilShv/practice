@@ -50,9 +50,11 @@ namespace BankApi.Infrastructure.Repository
             }
         }
 
-        public async Task RemoveAsync(BankCard entity, CancellationToken token)
+        public async Task RemoveAsync(Guid id, CancellationToken token)
         {
-            _context.BankCards.Remove(entity);
+            await _context.BankCards
+                .Where(x => x.Id == id)
+                .ExecuteDeleteAsync(token);
 
             await _context.SaveChangesAsync(token);
         }

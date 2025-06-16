@@ -19,9 +19,9 @@ namespace BankApi.Controllers
 
         [HttpDelete("RemoveCredit")]
         [Authorize(Policy = "UserDepositCredit")]
-        public async Task RemoveCredit([FromBody] ClientCreditRemoveDto credit)
+        public async Task RemoveCredit([FromBody] Guid clientId, [FromBody] Guid creditId)
         {
-            await _clientCreditService.RemoveCreditAsync(credit, HttpContext.RequestAborted);
+            await _clientCreditService.RemoveCreditAsync(clientId, creditId, HttpContext.RequestAborted);
         }
     }
 }

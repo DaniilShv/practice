@@ -29,9 +29,11 @@ namespace BankApi.Infrastructure.Repository
             return await _context.Employees.FirstOrDefaultAsync(x => x.Login == dto.Login);
         }
 
-        public async Task RemoveAsync(Employee entity, CancellationToken token)
+        public async Task RemoveAsync(Guid id, CancellationToken token)
         {
-            _context.Employees.Remove(entity);
+            await _context.Employees
+                .Where(x => x.Id == id)
+                .ExecuteDeleteAsync(token);
 
             await _context.SaveChangesAsync(token);
         }
