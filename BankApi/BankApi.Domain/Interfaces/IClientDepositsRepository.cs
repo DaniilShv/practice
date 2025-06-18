@@ -15,7 +15,7 @@ namespace BankApi.Domain.Interfaces
 
         Task<List<ClientDeposit>> GetAllAsync(CancellationToken token);
 
-        Task<ClientDeposit> GetById(ClientDeposit entity, CancellationToken token);
+        Task<ClientDeposit> GetByIdAsync(ClientDeposit entity, CancellationToken token);
 
         Task CreateAsync(ClientDeposit entity, CancellationToken token);
 

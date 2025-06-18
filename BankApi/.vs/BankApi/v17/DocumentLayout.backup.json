@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\practice\\practice\\BankApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|c:\\practice\\practice\\bankapi\\bankapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|solutionrelative:bankapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|c:\\practice\\practice\\bankapi\\bankapi\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|solutionrelative:bankapi\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{480234DC-B296-4B91-A81C-B83714EDFE9E}|BankApi.Service\\BankApi.Service.csproj|c:\\practice\\practice\\bankapi\\bankapi.service\\extensions\\jwtserviceextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{480234DC-B296-4B91-A81C-B83714EDFE9E}|BankApi.Service\\BankApi.Service.csproj|solutionrelative:bankapi.service\\extensions\\jwtserviceextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JwtServiceExtension.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi.Service\\Extensions\\JwtServiceExtension.cs",
+              "RelativeDocumentMoniker": "BankApi.Service\\Extensions\\JwtServiceExtension.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi.Service\\Extensions\\JwtServiceExtension.cs",
+              "RelativeToolTip": "BankApi.Service\\Extensions\\JwtServiceExtension.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAgwEIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T06:13:44.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClientController.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\ClientController.cs",
+              "RelativeDocumentMoniker": "BankApi\\Controllers\\ClientController.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\ClientController.cs",
+              "RelativeToolTip": "BankApi\\Controllers\\ClientController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAcwAsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T06:11:08.139Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -51,19 +81,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi\\Program.cs",
-              "RelativeDocumentMoniker": "BankApi\\Program.cs",
-              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi\\Program.cs",
-              "RelativeToolTip": "BankApi\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T11:31:33.294Z",
-              "EditorCaption": ""
             }
           ]
         }

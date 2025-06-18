@@ -17,9 +17,9 @@ namespace BankApi.Infrastructure.Repository
             return await _context.Locations.ToListAsync(token);
         }
 
-        public async Task<Location> GetById(Location entity, CancellationToken token)
+        public async Task<Location> GetByIdAsync(Guid id, CancellationToken token)
         {
-            return await _context.Locations.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+            return await _context.Locations.FirstOrDefaultAsync(x => x.Id == id, token);
         }
 
         public async Task RemoveAsync(Guid id, CancellationToken token)

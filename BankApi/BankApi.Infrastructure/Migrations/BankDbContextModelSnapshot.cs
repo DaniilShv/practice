@@ -265,9 +265,8 @@ namespace BankApi.Infrastructure.Migrations
                     b.Property<string>("Patronymic")
                         .HasColumnType("text");
 
-                    b.Property<string>("Position")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Position")
+                        .HasColumnType("integer");
 
                     b.Property<string>("RefreshToken")
                         .HasColumnType("text");
@@ -336,7 +335,7 @@ namespace BankApi.Infrastructure.Migrations
             modelBuilder.Entity("BankApi.Domain.Entities.BankBranch", b =>
                 {
                     b.HasOne("BankApi.Domain.Entities.Location", "Location")
-                        .WithMany("BankBranches")
+                        .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -347,7 +346,7 @@ namespace BankApi.Infrastructure.Migrations
             modelBuilder.Entity("BankApi.Domain.Entities.BankCard", b =>
                 {
                     b.HasOne("BankApi.Domain.Entities.BankRecord", "BankRecord")
-                        .WithMany("BankCards")
+                        .WithMany()
                         .HasForeignKey("BankRecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -358,13 +357,13 @@ namespace BankApi.Infrastructure.Migrations
             modelBuilder.Entity("BankApi.Domain.Entities.BankRecord", b =>
                 {
                     b.HasOne("BankApi.Domain.Entities.BankBranch", "BankBranch")
-                        .WithMany("BankRecords")
+                        .WithMany()
                         .HasForeignKey("BankBranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BankApi.Domain.Entities.Client", "Client")
-                        .WithMany("BankRecords")
+                        .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -377,13 +376,13 @@ namespace BankApi.Infrastructure.Migrations
             modelBuilder.Entity("BankApi.Domain.Entities.ClientCredit", b =>
                 {
                     b.HasOne("BankApi.Domain.Entities.Client", "Client")
-                        .WithMany("ClientCredits")
+                        .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BankApi.Domain.Entities.Credit", "Credit")
-                        .WithMany("ClientCredits")
+                        .WithMany()
                         .HasForeignKey("CreditId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -396,13 +395,13 @@ namespace BankApi.Infrastructure.Migrations
             modelBuilder.Entity("BankApi.Domain.Entities.ClientDeposit", b =>
                 {
                     b.HasOne("BankApi.Domain.Entities.Client", "Client")
-                        .WithMany("ClientDeposits")
+                        .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BankApi.Domain.Entities.Deposit", "Deposit")
-                        .WithMany("ClientDeposits")
+                        .WithMany()
                         .HasForeignKey("DepositId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -415,7 +414,7 @@ namespace BankApi.Infrastructure.Migrations
             modelBuilder.Entity("BankApi.Domain.Entities.Employee", b =>
                 {
                     b.HasOne("BankApi.Domain.Entities.BankBranch", "BankBranch")
-                        .WithMany("Employees")
+                        .WithMany()
                         .HasForeignKey("BankBranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -426,50 +425,12 @@ namespace BankApi.Infrastructure.Migrations
             modelBuilder.Entity("BankApi.Domain.Entities.PaymentHistory", b =>
                 {
                     b.HasOne("BankApi.Domain.Entities.BankRecord", "BankRecord")
-                        .WithMany("PaymentHistories")
+                        .WithMany()
                         .HasForeignKey("BankRecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BankRecord");
-                });
-
-            modelBuilder.Entity("BankApi.Domain.Entities.BankBranch", b =>
-                {
-                    b.Navigation("BankRecords");
-
-                    b.Navigation("Employees");
-                });
-
-            modelBuilder.Entity("BankApi.Domain.Entities.BankRecord", b =>
-                {
-                    b.Navigation("BankCards");
-
-                    b.Navigation("PaymentHistories");
-                });
-
-            modelBuilder.Entity("BankApi.Domain.Entities.Client", b =>
-                {
-                    b.Navigation("BankRecords");
-
-                    b.Navigation("ClientCredits");
-
-                    b.Navigation("ClientDeposits");
-                });
-
-            modelBuilder.Entity("BankApi.Domain.Entities.Credit", b =>
-                {
-                    b.Navigation("ClientCredits");
-                });
-
-            modelBuilder.Entity("BankApi.Domain.Entities.Deposit", b =>
-                {
-                    b.Navigation("ClientDeposits");
-                });
-
-            modelBuilder.Entity("BankApi.Domain.Entities.Location", b =>
-                {
-                    b.Navigation("BankBranches");
                 });
 #pragma warning restore 612, 618
         }

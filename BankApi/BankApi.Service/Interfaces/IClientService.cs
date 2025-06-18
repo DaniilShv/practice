@@ -13,10 +13,12 @@ namespace BankApi.Service.Interfaces
 
         Task<List<BankCardShowDto>> GetAllBankCardsAsync(Guid bankRecordId, CancellationToken token);
 
-        Task<ClientShowDto> LoginClientAsync(LoginDto dto, CancellationToken token);
+        Task<ClientShowDto> LoginClientAsync(LoginDto dto, string refreshToken, CancellationToken token);
 
         List<Claim> GetClaimClient(ClientShowDto client);
 
         Task<Client> GetByRefreshTokenAsync(string refreshToken, CancellationToken token);
+
+        Task RemoveClientAsync(Guid id, CancellationToken token);
     }
 }

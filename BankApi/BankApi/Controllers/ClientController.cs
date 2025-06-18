@@ -35,9 +35,9 @@ namespace BankApi.Controllers
         [HttpPost("LoginClient")]
         public async Task<ClientShowDto> LoginClient([FromBody] LoginDto dto)
         {
-            dto.RefreshToken = _tokenService.GenerateRefreshToken();
+            string refreshToken = _tokenService.GenerateRefreshToken();
 
-            var client = await _clientService.LoginClientAsync(dto, HttpContext.RequestAborted);
+            var client = await _clientService.LoginClientAsync(dto, refreshToken, HttpContext.RequestAborted);
 
             var claims = _clientService.GetClaimClient(client);
 
@@ -63,6 +63,12 @@ namespace BankApi.Controllers
             HttpContext.Response.Cookies.Append("tasty_cookie", token);
 
             return Ok();
+        }
+
+        [HttpDelete("RemoveClient/{id}")]
+        public async Task RemoveClient(Guid id)
+        {
+            await _clientService.RemoveClientAsync(id, HttpContext.RequestAborted);
         }
     }
 }

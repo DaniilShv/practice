@@ -4,7 +4,7 @@
     {
         Task<List<T>> GetAllAsync(CancellationToken token);
 
-        Task<T> GetById(T entity, CancellationToken token);
+        Task<T> GetByIdAsync(Guid id, CancellationToken token);
 
         Task CreateAsync(T entity, CancellationToken token);
 

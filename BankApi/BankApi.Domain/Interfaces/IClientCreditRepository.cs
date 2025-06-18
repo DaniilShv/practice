@@ -6,7 +6,7 @@ namespace BankApi.Domain.Interfaces
     {
         Task<List<ClientCredit>> GetAllAsync(CancellationToken token);
 
-        Task<ClientCredit> GetById(ClientCredit entity, CancellationToken token);
+        Task<ClientCredit> GetByIdAsync(ClientCredit entity, CancellationToken token);
 
         Task CreateAsync(ClientCredit entity, CancellationToken token);
 

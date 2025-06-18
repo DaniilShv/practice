@@ -112,6 +112,86 @@
     ]
   },
   {
+    "ContainingType": "BankApi.Controllers.BankEmployeeController",
+    "Method": "RefreshTokenEmployee",
+    "RelativePath": "api/{v}/BankEmployee/RefreshTokenEmployee",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.TokenDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankApi.Controllers.BankEmployeeController",
+    "Method": "RemoveEmployee",
+    "RelativePath": "api/{v}/BankEmployee/RemoveEmployee/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.BankEmployeeController",
+    "Method": "UpdatePositionEmployee",
+    "RelativePath": "api/{v}/BankEmployee/UpdatePositionEmployee/{id}/{position}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "position",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "BankApi.Controllers.BankRecordsController",
     "Method": "CreateBankRecord",
     "RelativePath": "api/{v}/BankRecords/CreateBankRecord",
@@ -398,6 +478,33 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BankApi.Controllers.ClientController",
+    "Method": "RemoveClient",
+    "RelativePath": "api/{v}/Client/RemoveClient/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "BankApi.Controllers.CreditController",
     "Method": "CreateCredit",
     "RelativePath": "api/{v}/Credit/CreateCredit",
@@ -427,14 +534,19 @@
   {
     "ContainingType": "BankApi.Controllers.CreditController",
     "Method": "RemoveCredit",
-    "RelativePath": "api/{v}/Credit/RemoveCredit",
+    "RelativePath": "api/{v}/Credit/RemoveCredit/{clientId}/{creditId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "credit",
-        "Type": "BankApi.Domain.DTOs.ClientCreditRemoveDto",
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "creditId",
+        "Type": "System.Guid",
         "IsRequired": true
       },
       {
@@ -528,6 +640,32 @@
       {
         "Type": "System.Void",
         "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BankApi.Controllers.PaymentController",
+    "Method": "GetPaymentByBankRecord",
+    "RelativePath": "api/Payment/GetPaymentByBankRecord/{bankRecordId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bankRecordId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[BankApi.Domain.DTOs.PaymentHistoryShowDto, BankApi.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]

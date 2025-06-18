@@ -37,16 +37,18 @@ namespace BankApi.Infrastructure.Repository
                 .ToListAsync(token);
         }
 
-        public async Task<Client> GetById(Client entity, CancellationToken token)
+        public async Task<Client> GetByIdAsync(Guid id, CancellationToken token)
         {
-            var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+            var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == id, token);
 
             return client;
         }
 
         public async Task<Client> GetByRefreshTokenAsync(string refreshToken, CancellationToken token)
         {
-            return await _context.Clients.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
+            var item = await _context.Clients.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
+
+            return item;
         }
 
         public async Task<Client> LoginClientAsync(LoginDto dto, CancellationToken token)

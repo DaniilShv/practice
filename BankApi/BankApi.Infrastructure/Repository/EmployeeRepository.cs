@@ -19,9 +19,21 @@ namespace BankApi.Infrastructure.Repository
             return await _context.Employees.ToListAsync(token);
         }
 
-        public Task<Employee> GetById(Employee entity, CancellationToken token)
+        public async Task<Employee> GetByIdAsync(Guid id, CancellationToken token)
         {
-            return _context.Employees.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+            var item = await _context.Employees.FirstOrDefaultAsync(x => x.Id == id, token);
+
+            if (item == null)
+                throw new ArgumentNullException("Укажите корректно идентификатор");
+
+            return item;
+        }
+
+        public async Task<Employee> GetByRefreshTokenAsync(string refreshToken, CancellationToken token)
+        {
+            var item = await _context.Employees.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
+
+            return item;
         }
 
         public async Task<Employee> LoginEmployeeAsync(LoginDto dto, CancellationToken token)
@@ -40,7 +52,11 @@ namespace BankApi.Infrastructure.Repository
 
         public async Task UpdateAsync(Employee entity, CancellationToken token)
         {
-            _context.Employees.Update(entity);
+            var item = await _context.Employees.FirstOrDefaultAsync(x => x.Id == entity.Id);
+
+            item.Position = entity.Position;
+
+            _context.Employees.Update(item);
 
             await _context.SaveChangesAsync(token);
         }

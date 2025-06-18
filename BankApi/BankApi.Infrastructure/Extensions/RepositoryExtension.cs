@@ -16,6 +16,7 @@ namespace BankApi.Infrastructure.Extensions
             service.AddScoped<IBankRecordRepository, BankRecordRepository>();
             service.AddScoped<IEmployeeRepository, EmployeeRepository>();
             service.AddScoped<IClientCreditRepository, ClientCreditRepository>();
+            service.AddScoped<IPaymentRepository, PaymentRepository>();
         }
     }
 }

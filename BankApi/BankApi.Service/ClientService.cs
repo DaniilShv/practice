@@ -17,16 +17,9 @@ namespace BankApi.Service
         {
             var hassher = new PasswordHasher();
 
-            var client = new Client
-            {
-                Name = dto.Name,
-                Patronymic = dto.Patronymic,
-                Surname = dto.Surname,
-                SerialPassport = dto.SerialPassport,
-                NumberPassport = dto.NumberPassport,
-                Login = dto.Login,
-                PasswordHash = hassher.HashPassword(dto.Password)
-            };
+            var client = _mapper.Map<Client>(dto);
+
+            client.PasswordHash = hassher.HashPassword(dto.Password);
 
             await _clientRepository.CreateAsync(client, token);
         }
@@ -43,13 +36,14 @@ namespace BankApi.Service
             return await _clientRepository.GetAllBankRecordsAsync(clientId, token);
         }
 
-        public async Task<ClientShowDto> LoginClientAsync(LoginDto dto, CancellationToken token)
+        public async Task<ClientShowDto> LoginClientAsync(LoginDto dto, string refreshToken,
+            CancellationToken token)
         {
             var hasher = new PasswordHasher();
 
             var client = await _clientRepository.LoginClientAsync(dto, token);
 
-            client.RefreshToken = dto.RefreshToken;
+            client.RefreshToken = refreshToken;
             client.RefreshTokenExpiryTime = DateTime.UtcNow.AddYears(100);
 
             if (client != null)
@@ -107,6 +101,11 @@ namespace BankApi.Service
                 throw new DataException("Укажите верный refresh Token");
 
             return client;
+        }
+
+        public async Task RemoveClientAsync(Guid id, CancellationToken token)
+        {
+            await _clientRepository.RemoveAsync(id, token);
         }
     }
 }

@@ -67,6 +67,11 @@ namespace BankApi.Service.Extensions
                     policy.RequireClaim("EmployeeStatus", "Manager");
                 });
 
+                options.AddPolicy("Director", policy =>
+                {
+                    policy.RequireClaim("EmployeeStatus", "Director");
+                });
+
             });
 
             services.AddScoped<ITokenService, JwtTokenService>();

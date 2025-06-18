@@ -19,8 +19,10 @@ namespace BankApi.Infrastructure.Repository
 
             if (bankRecord != null)
                 bankRecord.Total = record.Total;
+            else
+                throw new ArgumentNullException("Введите корректно идентификатор банковского счета");
 
-            _context.BankRecords.Update(bankRecord);
+                _context.BankRecords.Update(bankRecord);
 
             await _context.SaveChangesAsync(token);
         }
@@ -30,9 +32,11 @@ namespace BankApi.Infrastructure.Repository
             return await _context.BankRecords.ToListAsync(token);
         }
 
-        public async Task<BankRecord> GetById(BankRecord entity, CancellationToken token)
+        public async Task<BankRecord> GetByIdAsync(Guid id, CancellationToken token)
         {
-            return await _context.BankRecords.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+            var item = await _context.BankRecords.FirstOrDefaultAsync(x => x.Id == id, token);
+
+            return item;
         }
 
         public async Task RemoveAsync(Guid id, CancellationToken token)
@@ -57,8 +61,10 @@ namespace BankApi.Infrastructure.Repository
 
             if (bankRecord != null)
                 bankRecord.Total -= sum;
+            else
+                throw new ArgumentNullException("Введите корректно идентификатор банковского счета");
 
-            _context.BankRecords.Update(bankRecord);
+                _context.BankRecords.Update(bankRecord);
 
             await _context.SaveChangesAsync(token);
         }

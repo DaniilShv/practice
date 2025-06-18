@@ -10,15 +10,13 @@ namespace BankApi.Infrastructure.DbContextConfigs
         {
             builder.HasKey(x => x.Id);
 
-            builder.HasMany(x => x.BankCards)
-                .WithOne(x => x.BankRecord)
-                .HasForeignKey(x => x.BankRecordId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.BankBranch)
+                .WithMany()
+                .HasForeignKey(x => x.BankBranchId);
 
-            builder.HasMany(x => x.PaymentHistories)
-                .WithOne(x => x.BankRecord)
-                .HasForeignKey(x => x.BankRecordId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Client)
+                .WithMany()
+                .HasForeignKey(x => x.ClientId);
         }
     }
 }

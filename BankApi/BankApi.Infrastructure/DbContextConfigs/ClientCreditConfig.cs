@@ -9,6 +9,14 @@ namespace BankApi.Infrastructure.DbContextConfigs
         public void Configure(EntityTypeBuilder<ClientCredit> builder)
         {
             builder.HasKey(x => new { x.ClientId, x.CreditId });
+
+            builder.HasOne(x => x.Client)
+                .WithMany()
+                .HasForeignKey(x => x.ClientId);
+
+            builder.HasOne(x => x.Credit)
+                .WithMany()
+                .HasForeignKey(x => x.CreditId);
         }
     }
 }

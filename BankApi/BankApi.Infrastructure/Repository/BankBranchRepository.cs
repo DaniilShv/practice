@@ -19,9 +19,11 @@ namespace BankApi.Infrastructure.Repository
             return await _context.BankBranches.ToListAsync(token);
         }
 
-        public async Task<BankBranch> GetById(BankBranch entity, CancellationToken token)
+        public async Task<BankBranch> GetByIdAsync(Guid id, CancellationToken token)
         {
-            return await _context.BankBranches.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+            var item = await _context.BankBranches.FirstOrDefaultAsync(x => x.Id == id, token);
+
+            return item;
         }
 
         public async Task RemoveAsync(Guid id, CancellationToken token)

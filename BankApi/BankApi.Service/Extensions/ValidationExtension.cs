@@ -1,7 +1,4 @@
-﻿using BankApi.Domain.DTOs;
-using BankApi.Service.Validators;
-using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 namespace BankApi.Service.Extensions

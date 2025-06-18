@@ -25,11 +25,13 @@ namespace BankApi.Infrastructure.Repository
                 .ToListAsync(token);
         }
 
-        public async Task<ClientDeposit> GetById(ClientDeposit entity, CancellationToken token)
+        public async Task<ClientDeposit> GetByIdAsync(ClientDeposit entity, CancellationToken token)
         {
-            return await _context.ClientDeposits
+            var item = await _context.ClientDeposits
                 .FirstOrDefaultAsync(x => 
                 x.ClientId == entity.ClientId && x.DepositId == entity.DepositId, token);
+
+            return item;
         }
 
         public async Task RemoveAsync(Guid clientId, Guid depositId, CancellationToken token)
@@ -108,8 +110,10 @@ namespace BankApi.Infrastructure.Repository
 
             if (depositFromDb != null)
                 depositFromDb.Total = deposit.Total;
+            else
+                throw new ArgumentNullException("Введите корректно идентификатор");
 
-            _context.ClientDeposits.Update(depositFromDb);
+                _context.ClientDeposits.Update(depositFromDb);
 
             await _context.SaveChangesAsync(token);
         }

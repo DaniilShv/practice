@@ -4,12 +4,18 @@ using BankApi.Infrastructure.Extensions;
 using BankApi.Middlewares;
 using BankApi.Service.Extensions;
 using BankApi.Service.Settings;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddApiVersion();
+
+Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 builder.Services.AddDatabase(builder.Configuration);
 

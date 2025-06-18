@@ -19,9 +19,11 @@ namespace BankApi.Infrastructure.Repository
             return await _context.BankCards.ToListAsync(token);
         }
 
-        public async Task<BankCard> GetById(BankCard entity, CancellationToken token)
+        public async Task<BankCard> GetByIdAsync(Guid id, CancellationToken token)
         {
-            return await _context.BankCards.FirstOrDefaultAsync(x => x.Id == entity.Id, token);
+            var item = await _context.BankCards.FirstOrDefaultAsync(x => x.Id == id, token);
+
+            return item;
         }
 
         public async Task PayCardAsync(BankCardPayDto cardDto, PaymentHistory payment,
@@ -48,6 +50,8 @@ namespace BankApi.Infrastructure.Repository
                     await _context.SaveChangesAsync(token);
                 }
             }
+            else
+                throw new ArgumentNullException("Оформите банковскую карту");
         }
 
         public async Task RemoveAsync(Guid id, CancellationToken token)

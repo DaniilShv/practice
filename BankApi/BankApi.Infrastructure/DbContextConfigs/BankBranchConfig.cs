@@ -10,13 +10,9 @@ namespace BankApi.Infrastructure.DbContextConfigs
         {
             builder.HasKey(x => x.Id);
 
-            builder.HasMany(x => x.Employees)
-                .WithOne(x => x.BankBranch)
-                .HasForeignKey(x => x.BankBranchId);
-
-            builder.HasMany(x => x.BankRecords)
-                .WithOne(x => x.BankBranch)
-                .HasForeignKey(x => x.BankBranchId);
+            builder.HasOne(x => x.Location)
+                .WithMany()
+                .HasForeignKey(x => x.LocationId);
         }
     }
 }

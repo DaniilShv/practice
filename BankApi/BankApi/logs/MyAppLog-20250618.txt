@@ -1,0 +1,113 @@
+2025-06-18 10:55:41.815 +05:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-18 10:55:41.925 +05:00 [INF] Now listening on: https://localhost:7262
+2025-06-18 10:55:41.927 +05:00 [INF] Now listening on: http://localhost:5027
+2025-06-18 10:55:41.992 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-18 10:55:41.994 +05:00 [INF] Hosting environment: Development
+2025-06-18 10:55:41.995 +05:00 [INF] Content root path: C:\practice\practice\BankApi\BankApi
+2025-06-18 10:55:42.172 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/index.html - null null
+2025-06-18 10:55:42.264 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/index.html - 200 null text/html;charset=utf-8 92.9586ms
+2025-06-18 10:55:42.295 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-18 10:55:42.295 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_vs/browserLink - null null
+2025-06-18 10:55:42.299 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 4.8423ms
+2025-06-18 10:55:42.318 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.1163ms
+2025-06-18 10:55:42.421 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - null null
+2025-06-18 10:55:42.437 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.2308ms
+2025-06-18 10:55:55.845 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7262/api/1/Client/LoginClient - application/json 75
+2025-06-18 10:55:55.910 +05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18.06.2025 5:42:40', Current time (UTC): '18.06.2025 5:55:55'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-06-18 10:55:55.921 +05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18.06.2025 5:42:40', Current time (UTC): '18.06.2025 5:55:55'.
+2025-06-18 10:55:55.924 +05:00 [INF] Executing endpoint 'BankApi.Controllers.ClientController.LoginClient (BankApi)'
+2025-06-18 10:55:55.942 +05:00 [INF] Route matched with {action = "LoginClient", controller = "Client"}. Executing controller action with signature System.Threading.Tasks.Task`1[BankApi.Domain.DTOs.ClientShowDto] LoginClient(BankApi.Domain.DTOs.LoginDto) on controller BankApi.Controllers.ClientController (BankApi).
+2025-06-18 10:55:56.834 +05:00 [INF] Executed DbCommand (32ms) [Parameters=[@__dto_Login_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."DateBirth", c."Login", c."Name", c."NumberPassport", c."PasswordHash", c."Patronymic", c."RefreshToken", c."RefreshTokenExpiryTime", c."SerialPassport", c."Surname"
+FROM "Clients" AS c
+WHERE c."Login" = @__dto_Login_0
+LIMIT 1
+2025-06-18 10:55:56.970 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?', @p2='?', @p3='?' (DbType = Int64), @p4='?', @p5='?', @p6='?', @p7='?' (DbType = DateTime), @p8='?' (DbType = Int32), @p9='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Clients" SET "DateBirth" = @p0, "Login" = @p1, "Name" = @p2, "NumberPassport" = @p3, "PasswordHash" = @p4, "Patronymic" = @p5, "RefreshToken" = @p6, "RefreshTokenExpiryTime" = @p7, "SerialPassport" = @p8, "Surname" = @p9
+WHERE "Id" = @p10;
+2025-06-18 10:55:56.989 +05:00 [INF] Executing ObjectResult, writing value of type 'BankApi.Domain.DTOs.ClientShowDto'.
+2025-06-18 10:55:57.002 +05:00 [INF] Executed action BankApi.Controllers.ClientController.LoginClient (BankApi) in 1056.191ms
+2025-06-18 10:55:57.003 +05:00 [INF] Executed endpoint 'BankApi.Controllers.ClientController.LoginClient (BankApi)'
+2025-06-18 10:55:57.008 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7262/api/1/Client/LoginClient - 200 null application/json; charset=utf-8 1163.2311ms
+2025-06-18 11:33:31.495 +05:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-18 11:33:31.604 +05:00 [INF] Now listening on: https://localhost:7262
+2025-06-18 11:33:31.605 +05:00 [INF] Now listening on: http://localhost:5027
+2025-06-18 11:33:31.672 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-18 11:33:31.673 +05:00 [INF] Hosting environment: Development
+2025-06-18 11:33:31.674 +05:00 [INF] Content root path: C:\practice\practice\BankApi\BankApi
+2025-06-18 11:33:32.095 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/index.html - null null
+2025-06-18 11:33:32.190 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/index.html - 200 null text/html;charset=utf-8 95.2988ms
+2025-06-18 11:33:32.226 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_vs/browserLink - null null
+2025-06-18 11:33:32.226 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-18 11:33:32.234 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 8.1295ms
+2025-06-18 11:33:32.248 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.2538ms
+2025-06-18 11:33:32.524 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - null null
+2025-06-18 11:33:32.543 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.661ms
+2025-06-18 11:34:33.282 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7262/api/1/BankEmployee/LoginEmployee - application/json 48
+2025-06-18 11:34:33.334 +05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18.06.2025 5:56:56', Current time (UTC): '18.06.2025 6:34:33'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-06-18 11:34:33.342 +05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18.06.2025 5:56:56', Current time (UTC): '18.06.2025 6:34:33'.
+2025-06-18 11:34:33.344 +05:00 [INF] Executing endpoint 'BankApi.Controllers.BankEmployeeController.LoginEmployee (BankApi)'
+2025-06-18 11:34:33.362 +05:00 [INF] Route matched with {action = "LoginEmployee", controller = "BankEmployee"}. Executing controller action with signature System.Threading.Tasks.Task`1[BankApi.Domain.DTOs.EmployeeShowDto] LoginEmployee(BankApi.Domain.DTOs.LoginDto) on controller BankApi.Controllers.BankEmployeeController (BankApi).
+2025-06-18 11:34:34.284 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[@__dto_Login_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."BankBranchId", e."DateBirth", e."Education", e."Gender", e."Login", e."Name", e."PasswordHash", e."Patronymic", e."Position", e."RefreshToken", e."RefreshTokenExpiryTime", e."Salary", e."Surname"
+FROM "Employees" AS e
+WHERE e."Login" = @__dto_Login_0
+LIMIT 1
+2025-06-18 11:34:34.383 +05:00 [INF] Executing ObjectResult, writing value of type 'BankApi.Domain.DTOs.EmployeeShowDto'.
+2025-06-18 11:34:34.392 +05:00 [INF] Executed action BankApi.Controllers.BankEmployeeController.LoginEmployee (BankApi) in 1025.97ms
+2025-06-18 11:34:34.393 +05:00 [INF] Executed endpoint 'BankApi.Controllers.BankEmployeeController.LoginEmployee (BankApi)'
+2025-06-18 11:34:34.398 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7262/api/1/BankEmployee/LoginEmployee - 200 null application/json; charset=utf-8 1115.9393ms
+2025-06-18 11:36:25.966 +05:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-18 11:36:26.084 +05:00 [INF] Now listening on: https://localhost:7262
+2025-06-18 11:36:26.086 +05:00 [INF] Now listening on: http://localhost:5027
+2025-06-18 11:36:26.152 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-18 11:36:26.154 +05:00 [INF] Hosting environment: Development
+2025-06-18 11:36:26.155 +05:00 [INF] Content root path: C:\practice\practice\BankApi\BankApi
+2025-06-18 11:36:26.878 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/index.html - null null
+2025-06-18 11:36:26.988 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/index.html - 200 null text/html;charset=utf-8 110.8327ms
+2025-06-18 11:36:27.023 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-18 11:36:27.035 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 12.5872ms
+2025-06-18 11:36:27.036 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_vs/browserLink - null null
+2025-06-18 11:36:27.062 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.7223ms
+2025-06-18 11:36:27.317 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - null null
+2025-06-18 11:36:27.342 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.3602ms
+2025-06-18 11:36:39.129 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7262/api/1/BankEmployee/LoginEmployee - application/json 48
+2025-06-18 11:36:39.186 +05:00 [INF] Executing endpoint 'BankApi.Controllers.BankEmployeeController.LoginEmployee (BankApi)'
+2025-06-18 11:36:39.205 +05:00 [INF] Route matched with {action = "LoginEmployee", controller = "BankEmployee"}. Executing controller action with signature System.Threading.Tasks.Task`1[BankApi.Domain.DTOs.EmployeeShowDto] LoginEmployee(BankApi.Domain.DTOs.LoginDto) on controller BankApi.Controllers.BankEmployeeController (BankApi).
+2025-06-18 11:36:40.111 +05:00 [INF] Executed DbCommand (32ms) [Parameters=[@__dto_Login_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."BankBranchId", e."DateBirth", e."Education", e."Gender", e."Login", e."Name", e."PasswordHash", e."Patronymic", e."Position", e."RefreshToken", e."RefreshTokenExpiryTime", e."Salary", e."Surname"
+FROM "Employees" AS e
+WHERE e."Login" = @__dto_Login_0
+LIMIT 1
+2025-06-18 11:36:40.203 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__entity_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."BankBranchId", e."DateBirth", e."Education", e."Gender", e."Login", e."Name", e."PasswordHash", e."Patronymic", e."Position", e."RefreshToken", e."RefreshTokenExpiryTime", e."Salary", e."Surname"
+FROM "Employees" AS e
+WHERE e."Id" = @__entity_Id_0
+LIMIT 1
+2025-06-18 11:36:40.279 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@p13='?' (DbType = Guid), @p0='?' (DbType = Guid), @p1='?' (DbType = Date), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?', @p5='?', @p6='?', @p7='?', @p8='?', @p9='?', @p10='?' (DbType = DateTime), @p11='?' (DbType = Decimal), @p12='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Employees" SET "BankBranchId" = @p0, "DateBirth" = @p1, "Education" = @p2, "Gender" = @p3, "Login" = @p4, "Name" = @p5, "PasswordHash" = @p6, "Patronymic" = @p7, "Position" = @p8, "RefreshToken" = @p9, "RefreshTokenExpiryTime" = @p10, "Salary" = @p11, "Surname" = @p12
+WHERE "Id" = @p13;
+2025-06-18 11:36:40.300 +05:00 [INF] Executing ObjectResult, writing value of type 'BankApi.Domain.DTOs.EmployeeShowDto'.
+2025-06-18 11:36:40.308 +05:00 [INF] Executed action BankApi.Controllers.BankEmployeeController.LoginEmployee (BankApi) in 1099.6422ms
+2025-06-18 11:36:40.310 +05:00 [INF] Executed endpoint 'BankApi.Controllers.BankEmployeeController.LoginEmployee (BankApi)'
+2025-06-18 11:36:40.316 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7262/api/1/BankEmployee/LoginEmployee - 200 null application/json; charset=utf-8 1186.2933ms
+2025-06-18 11:37:10.724 +05:00 [INF] Request starting HTTP/2 PUT https://localhost:7262/api/1/BankEmployee/RefreshTokenEmployee - application/json 270
+2025-06-18 11:37:10.732 +05:00 [INF] Executing endpoint 'BankApi.Controllers.BankEmployeeController.RefreshTokenEmployee (BankApi)'
+2025-06-18 11:37:10.746 +05:00 [INF] Route matched with {action = "RefreshTokenEmployee", controller = "BankEmployee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RefreshTokenEmployee(BankApi.Domain.DTOs.TokenDto) on controller BankApi.Controllers.BankEmployeeController (BankApi).
+2025-06-18 11:37:10.782 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT e."Id", e."BankBranchId", e."DateBirth", e."Education", e."Gender", e."Login", e."Name", e."PasswordHash", e."Patronymic", e."Position", e."RefreshToken", e."RefreshTokenExpiryTime", e."Salary", e."Surname"
+FROM "Employees" AS e
+WHERE e."RefreshToken" = @__refreshToken_0
+LIMIT 1
+2025-06-18 11:37:10.797 +05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-06-18 11:37:10.798 +05:00 [INF] Executed action BankApi.Controllers.BankEmployeeController.RefreshTokenEmployee (BankApi) in 50.6397ms
+2025-06-18 11:37:10.799 +05:00 [INF] Executed endpoint 'BankApi.Controllers.BankEmployeeController.RefreshTokenEmployee (BankApi)'
+2025-06-18 11:37:10.800 +05:00 [INF] Request finished HTTP/2 PUT https://localhost:7262/api/1/BankEmployee/RefreshTokenEmployee - 200 0 null 75.3381ms
