@@ -21,4 +21,8 @@
     <ProjectReference Include="..\BankApi.Service\BankApi.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="logs\" />
+  </ItemGroup>
+
 </Project>
