@@ -14,6 +14,10 @@ namespace BankApi.Controllers
     public class BankEmployeeController(IEmployeeService _employeeService,
         ITokenService _tokenService) : ControllerBase
     {
+        /// <summary>
+        /// Добавить сотрудника в БД
+        /// </summary>
+        /// <param name="employee">Информация о сотруднике</param>
         [HttpPost("CreateEmployee")]
         [Authorize(Policy = "Manager")]
         public async Task CreateEmployee([FromBody] CreateEmployeeDto employee)
@@ -21,6 +25,11 @@ namespace BankApi.Controllers
             await _employeeService.CreateEmployeeAsync(employee, HttpContext.RequestAborted);
         }
 
+        /// <summary>
+        /// Вход сотрудника в систему
+        /// </summary>
+        /// <param name="dto">Логин и пароль</param>
+        /// <returns>Информация о сотруднике</returns>
         [HttpPost("LoginEmployee")]
         public async Task<EmployeeShowDto> LoginEmployee([FromBody] LoginDto dto)
         {
@@ -37,6 +46,10 @@ namespace BankApi.Controllers
             return employee;
         }
 
+        /// <summary>
+        /// Проверяет refresh token сотрудника
+        /// </summary>
+        /// <param name="dto">Информация о токенах</param>
         [HttpPut("RefreshTokenEmployee")]
         public IActionResult RefreshTokenEmployee([FromBody] TokenDto dto)
         {
@@ -54,12 +67,21 @@ namespace BankApi.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Обновление должности сотрудника
+        /// </summary>
+        /// <param name="id">ID сотрудника</param>
+        /// <param name="position">Название должности</param>
         [HttpPut("UpdatePositionEmployee/{id}/{position}")]
         public async Task UpdatePositionEmployee(Guid id, string position)
         {
             await _employeeService.UpdatePositionEmployeeAsync(id, position, HttpContext.RequestAborted);
         }
 
+        /// <summary>
+        /// Удалить информацию о сотруднике из БД по ID
+        /// </summary>
+        /// <param name="id">ID сотрудника</param>
         [HttpDelete("RemoveEmployee/{id}")]
         public async Task RemoveEmployee(Guid id)
         {

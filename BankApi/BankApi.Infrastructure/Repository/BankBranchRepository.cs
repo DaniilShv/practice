@@ -6,7 +6,7 @@ namespace BankApi.Infrastructure.Repository
 {
     public class BankBranchRepository(BankDbContext _context) : IBankBranchRepository
     {
-
+        
         public async Task CreateAsync(BankBranch bankBranch, CancellationToken token)
         {
             await _context.BankBranches.AddAsync(bankBranch, token);
@@ -14,11 +14,13 @@ namespace BankApi.Infrastructure.Repository
             await _context.SaveChangesAsync(token);
         }
 
+        
         public async Task<List<BankBranch>> GetAllAsync(CancellationToken token)
         {
             return await _context.BankBranches.ToListAsync(token);
         }
 
+        
         public async Task<BankBranch> GetByIdAsync(Guid id, CancellationToken token)
         {
             var item = await _context.BankBranches.FirstOrDefaultAsync(x => x.Id == id, token);
@@ -26,6 +28,7 @@ namespace BankApi.Infrastructure.Repository
             return item;
         }
 
+        
         public async Task RemoveAsync(Guid id, CancellationToken token)
         {
             await _context.BankBranches
@@ -35,6 +38,7 @@ namespace BankApi.Infrastructure.Repository
             await _context.SaveChangesAsync(token);
         }
 
+        
         public async Task UpdateAsync(BankBranch entity, CancellationToken token)
         {
             _context.BankBranches.Update(entity);

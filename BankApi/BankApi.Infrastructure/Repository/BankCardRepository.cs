@@ -5,8 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BankApi.Infrastructure.Repository
 {
-    internal class BankCardRepository(BankDbContext _context) : IBankCardRepository
+    public class BankCardRepository(BankDbContext _context) : IBankCardRepository
     {
+        
         public async Task CreateAsync(BankCard card, CancellationToken token)
         {
             await _context.BankCards.AddAsync(card, token);
@@ -14,11 +15,13 @@ namespace BankApi.Infrastructure.Repository
             await _context.SaveChangesAsync(token);
         }
 
+        
         public async Task<List<BankCard>> GetAllAsync(CancellationToken token)
         {
             return await _context.BankCards.ToListAsync(token);
         }
 
+        
         public async Task<BankCard> GetByIdAsync(Guid id, CancellationToken token)
         {
             var item = await _context.BankCards.FirstOrDefaultAsync(x => x.Id == id, token);
@@ -26,6 +29,7 @@ namespace BankApi.Infrastructure.Repository
             return item;
         }
 
+        
         public async Task PayCardAsync(BankCardPayDto cardDto, PaymentHistory payment,
             CancellationToken token)
         {
@@ -54,6 +58,7 @@ namespace BankApi.Infrastructure.Repository
                 throw new ArgumentNullException("Оформите банковскую карту");
         }
 
+        
         public async Task RemoveAsync(Guid id, CancellationToken token)
         {
             await _context.BankCards
@@ -63,6 +68,7 @@ namespace BankApi.Infrastructure.Repository
             await _context.SaveChangesAsync(token);
         }
 
+        
         public async Task UpdateAsync(BankCard entity, CancellationToken token)
         {
             _context.BankCards.Update(entity);

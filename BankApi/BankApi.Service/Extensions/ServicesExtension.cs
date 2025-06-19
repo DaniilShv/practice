@@ -17,6 +17,7 @@ namespace BankApi.Service.Extensions
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IClientCreditService, ClientCreditService>();
             services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<ITokenService, JwtTokenService>();
             services.AddAutoMapper(typeof(BankProfile));
         }
     }

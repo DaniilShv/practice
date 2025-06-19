@@ -851,6 +851,47 @@
         }
       }
     },
+    "/api/{v}/Credit/TransferMoneyOnCredit": {
+      "put": {
+        "tags": [
+          "Credit"
+        ],
+        "parameters": [
+          {
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferMoneyCreditDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferMoneyCreditDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferMoneyCreditDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/{v}/Deposit/CreateDeposit": {
       "post": {
         "tags": [
@@ -1366,6 +1407,28 @@
           "refreshToken": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransferMoneyCreditDto": {
+        "type": "object",
+        "properties": {
+          "bankRecordId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "creditId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sum": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

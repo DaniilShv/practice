@@ -6,6 +6,7 @@ namespace BankApi.Infrastructure.Repository
 {
     public class BankRecordRepository(BankDbContext _context) : IBankRecordRepository
     {
+        
         public async Task CreateAsync(BankRecord record, CancellationToken token)
         {
             await _context.AddAsync(record, token);
@@ -47,7 +48,7 @@ namespace BankApi.Infrastructure.Repository
 
             await _context.SaveChangesAsync(token);
         }
-
+        
         public async Task UpdateAsync(BankRecord entity, CancellationToken token)
         {
             _context.BankRecords.Update(entity);

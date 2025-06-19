@@ -24,4 +24,15 @@ namespace BankApi.Domain.DTOs
 
         public Guid CreditId { get; set; }
     }
+
+    public class TransferMoneyCreditDto
+    {
+        public Guid BankRecordId { get; set; }
+
+        public Guid ClientId { get; set; }
+
+        public Guid CreditId { get; set; }
+
+        public decimal Sum { get; set; }
+    }
 }

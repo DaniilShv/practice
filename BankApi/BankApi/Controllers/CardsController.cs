@@ -10,6 +10,10 @@ namespace BankApi.Controllers
     [Route("api/{v:apiversion}/[controller]")]
     public class CardsController(IBankCardService _bankCardService) : ControllerBase
     {
+        /// <summary>
+        /// Добавить информацию о банковской карте в БД
+        /// </summary>
+        /// <param name="bankRecordId">ID банковского счета</param>
         [HttpPost("CreateBankCard/{bankRecordId}")]
         [Authorize(Policy = "Employee")]
         public async Task CreateBankCard(Guid bankRecordId)
@@ -17,6 +21,11 @@ namespace BankApi.Controllers
             await _bankCardService.CreateBankCardAsync(bankRecordId, HttpContext.RequestAborted);
         }
 
+        /// <summary>
+        /// Оплатить банковской картой
+        /// </summary>
+        /// <param name="dto">Информация о банковской карте</param>
+        /// <param name="nameSeller">Название продавца</param>
         [HttpPut("PayCard")]
         [Authorize(Policy = "User")]
         public async Task PayCard([FromQuery] BankCardPayDto dto, [FromQuery] string nameSeller)

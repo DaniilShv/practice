@@ -29,5 +29,10 @@ namespace BankApi.Service
 
             await _clientCreditRepository.RemoveAsync(clientId, creditId, token);
         }
+
+        public async Task TransferMoneyOnCreditAsync(TransferMoneyCreditDto dto, CancellationToken token)
+        {
+            await _clientCreditRepository.TransferMoneyOnCredit(dto, token);
+        }
     }
 }

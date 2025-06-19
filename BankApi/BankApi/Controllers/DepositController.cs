@@ -10,6 +10,10 @@ namespace BankApi.Controllers
     [Route("api/{v:apiversion}/[controller]")]
     public class DepositController(IClientDepositsService _clientDepositsService) : ControllerBase
     {
+        /// <summary>
+        /// Открыть банковский вклад
+        /// </summary>
+        /// <param name="dto">Информация о вкладе и клиенте</param>
         [HttpPost("CreateDeposit")]
         [Authorize(Policy = "UserDepositCredit")]
         public async Task CreateDeposit([FromBody] ClientDepositCreateDto dto)
@@ -17,6 +21,10 @@ namespace BankApi.Controllers
             await _clientDepositsService.CreateDepositAsync(dto, HttpContext.RequestAborted);
         }
 
+        /// <summary>
+        /// Положить деньги на вклад с банковского счета
+        /// </summary>
+        /// <param name="dto">Информация о денежном перевод</param>
         [HttpPut("TransferMoneyOnDeposit")]
         [Authorize(Policy = "UserDepositCredit")]
         public async Task TransferMoneyOnDeposit([FromBody] TransferMoneyDepositDto dto)
@@ -24,6 +32,10 @@ namespace BankApi.Controllers
             await _clientDepositsService.TransferMoneyOnDepositAsync(dto, HttpContext.RequestAborted);
         }
 
+        /// <summary>
+        /// Положить деньги на банковский счет со вклада
+        /// </summary>
+        /// <param name="dto">Информация о денежном переводе</param>
         [HttpPut("TransferMoneyFromDeposit")]
         [Authorize(Policy = "UserDepositCredit")]
         public async Task TransferMoneyFromDeposit([FromBody] TransferMoneyDepositDto dto)

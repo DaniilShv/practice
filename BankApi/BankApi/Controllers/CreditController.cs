@@ -23,5 +23,12 @@ namespace BankApi.Controllers
         {
             await _clientCreditService.RemoveCreditAsync(clientId, creditId, HttpContext.RequestAborted);
         }
+
+        [HttpPut("TransferMoneyOnCredit")]
+        [Authorize(Policy = "UserDepositCredit")]
+        public async Task TransferMoneyOnCredit([FromBody] TransferMoneyCreditDto dto)
+        {
+            await _clientCreditService.TransferMoneyOnCreditAsync(dto, HttpContext.RequestAborted);
+        }
     }
 }

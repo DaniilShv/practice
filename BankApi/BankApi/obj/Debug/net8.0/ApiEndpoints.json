@@ -564,6 +564,33 @@
     ]
   },
   {
+    "ContainingType": "BankApi.Controllers.CreditController",
+    "Method": "TransferMoneyOnCredit",
+    "RelativePath": "api/{v}/Credit/TransferMoneyOnCredit",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.TransferMoneyCreditDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "BankApi.Controllers.DepositController",
     "Method": "CreateDeposit",
     "RelativePath": "api/{v}/Deposit/CreateDeposit",

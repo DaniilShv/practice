@@ -25,11 +25,11 @@ namespace BankApi.Infrastructure.Repository
                 .ToListAsync(token);
         }
 
-        public async Task<ClientDeposit> GetByIdAsync(ClientDeposit entity, CancellationToken token)
+        public async Task<ClientDeposit> GetByIdAsync(Guid clientId, Guid depositId, CancellationToken token)
         {
             var item = await _context.ClientDeposits
                 .FirstOrDefaultAsync(x => 
-                x.ClientId == entity.ClientId && x.DepositId == entity.DepositId, token);
+                x.ClientId == clientId && x.DepositId == depositId, token);
 
             return item;
         }

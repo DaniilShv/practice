@@ -73,8 +73,6 @@ namespace BankApi.Service.Extensions
                 });
 
             });
-
-            services.AddScoped<ITokenService, JwtTokenService>();
         }
     }
 }
