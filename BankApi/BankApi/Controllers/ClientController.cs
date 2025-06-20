@@ -93,6 +93,7 @@ namespace BankApi.Controllers
         /// </summary>
         /// <param name="id">ID клиента</param>
         [HttpDelete("RemoveClient/{id}")]
+        [Authorize(Policy = "Employee")]
         public async Task RemoveClient(Guid id)
         {
             await _clientService.RemoveClientAsync(id, HttpContext.RequestAborted);

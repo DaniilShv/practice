@@ -73,6 +73,7 @@ namespace BankApi.Controllers
         /// <param name="id">ID сотрудника</param>
         /// <param name="position">Название должности</param>
         [HttpPut("UpdatePositionEmployee/{id}/{position}")]
+        [Authorize(Policy = "Manager")]
         public async Task UpdatePositionEmployee(Guid id, string position)
         {
             await _employeeService.UpdatePositionEmployeeAsync(id, position, HttpContext.RequestAborted);
@@ -83,6 +84,7 @@ namespace BankApi.Controllers
         /// </summary>
         /// <param name="id">ID сотрудника</param>
         [HttpDelete("RemoveEmployee/{id}")]
+        [Authorize(Policy = "Manager")]
         public async Task RemoveEmployee(Guid id)
         {
             await _employeeService.RemoveEmployeeAsync(id, HttpContext.RequestAborted);

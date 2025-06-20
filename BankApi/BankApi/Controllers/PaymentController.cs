@@ -1,5 +1,6 @@
 ﻿using BankApi.Domain.DTOs;
 using BankApi.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankApi.Controllers
@@ -15,6 +16,7 @@ namespace BankApi.Controllers
         /// <param name="bankRecordId">ID банковского счета</param>
         /// <returns>Список платежей</returns>
         [HttpGet("GetPaymentByBankRecord/{bankRecordId}")]
+        [Authorize(Policy = "User")]
         public async Task<List<PaymentHistoryShowDto>> GetPaymentByBankRecord(Guid bankRecordId)
         {
             return await _paymentService.GetByBankRecordAsync(bankRecordId, HttpContext.RequestAborted);

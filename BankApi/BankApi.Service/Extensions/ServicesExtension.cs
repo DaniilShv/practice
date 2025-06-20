@@ -1,5 +1,6 @@
 ﻿using BankApi.Service.Interfaces;
 using BankApi.Service.MappingProfiles;
+using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BankApi.Service.Extensions
@@ -8,17 +9,15 @@ namespace BankApi.Service.Extensions
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ILocationService, LocationService>();
-            services.AddScoped<IBankCardService, BankCardService>();
-            services.AddScoped<IClientService, ClientService>();
-            services.AddScoped<IBankBranchService, BankBranchService>();
-            services.AddScoped<IClientDepositsService, ClientDepositsService>();
-            services.AddScoped<IBankRecordService, BankRecordService>();
-            services.AddScoped<IEmployeeService, EmployeeService>();
-            services.AddScoped<IClientCreditService, ClientCreditService>();
-            services.AddScoped<IPaymentService, PaymentService>();
-            services.AddScoped<ITokenService, JwtTokenService>();
             services.AddAutoMapper(typeof(BankProfile));
+
+            services.Scan(scan =>
+            {
+                scan.FromAssemblyOf<IClientService>()
+                .AddClasses(classes => classes.Where(x => x.Name.EndsWith("Service")))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime();
+            });
         }
     }
 }
