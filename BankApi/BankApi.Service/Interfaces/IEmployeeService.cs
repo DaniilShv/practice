@@ -17,5 +17,7 @@ namespace BankApi.Service.Interfaces
         Task UpdatePositionEmployeeAsync(Guid id, string position, CancellationToken token);
 
         Task RemoveEmployeeAsync(Guid id, CancellationToken token);
+
+        Task<List<Employee>> GetAllAsync(CancellationToken token);
     }
 }

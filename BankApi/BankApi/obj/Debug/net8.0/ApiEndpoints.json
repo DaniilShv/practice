@@ -662,6 +662,16 @@
     ]
   },
   {
+    "ContainingType": "BankApi.Controllers.ExcelController",
+    "Method": "CreateExcelFile",
+    "RelativePath": "api/Excel/CreateExcelFile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BankApi.Controllers.PaymentController",
     "Method": "GetPaymentByBankRecord",
     "RelativePath": "api/Payment/GetPaymentByBankRecord/{bankRecordId}",

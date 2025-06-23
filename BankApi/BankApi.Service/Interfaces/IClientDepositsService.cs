@@ -14,5 +14,7 @@ namespace BankApi.Service.Interfaces
         Task TransferMoneyOnDepositAsync(TransferMoneyDepositDto dto, CancellationToken token);
 
         Task TransferMoneyFromDepositAsync(TransferMoneyDepositDto dto, CancellationToken token);
+
+        Task<List<ClientDeposit>> GetAllAsync(CancellationToken token);
     }
 }

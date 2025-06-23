@@ -1011,6 +1011,18 @@
         }
       }
     },
+    "/api/Excel/CreateExcelFile": {
+      "get": {
+        "tags": [
+          "Excel"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Payment/GetPaymentByBankRecord/{bankRecordId}": {
       "get": {
         "tags": [

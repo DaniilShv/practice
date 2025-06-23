@@ -171,3 +171,11 @@ C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Serilog.Sinks.Console.dll
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Serilog.Sinks.File.dll
 C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\Scrutor.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\ClosedXML.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\ClosedXML.Parser.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\DocumentFormat.OpenXml.Framework.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\ExcelNumberFormat.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\RBush.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\SixLabors.Fonts.dll
+C:\practice\practice\BankApi\BankApi\bin\Debug\net8.0\System.IO.Packaging.dll

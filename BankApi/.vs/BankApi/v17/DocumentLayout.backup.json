@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\practice\\practice\\BankApi\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{480234DC-B296-4B91-A81C-B83714EDFE9E}|BankApi.Service\\BankApi.Service.csproj|c:\\practice\\practice\\bankapi\\bankapi.service\\services\\excelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{480234DC-B296-4B91-A81C-B83714EDFE9E}|BankApi.Service\\BankApi.Service.csproj|solutionrelative:bankapi.service\\services\\excelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|c:\\practice\\practice\\bankapi\\bankapi\\controllers\\excelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55B3864-514D-4E28-A4C5-DC3D47FE364C}|BankApi\\BankApi.csproj|solutionrelative:bankapi\\controllers\\excelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,6 +55,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExcelService.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi.Service\\Services\\ExcelService.cs",
+              "RelativeDocumentMoniker": "BankApi.Service\\Services\\ExcelService.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi.Service\\Services\\ExcelService.cs",
+              "RelativeToolTip": "BankApi.Service\\Services\\ExcelService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T10:17:02.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ExcelController.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\ExcelController.cs",
+              "RelativeDocumentMoniker": "BankApi\\Controllers\\ExcelController.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi\\Controllers\\ExcelController.cs",
+              "RelativeToolTip": "BankApi\\Controllers\\ExcelController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwB8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T09:53:13.09Z",
+              "EditorCaption": ""
             }
           ]
         }

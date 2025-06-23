@@ -20,5 +20,7 @@ namespace BankApi.Service.Interfaces
         Task<Client> GetByRefreshTokenAsync(string refreshToken, CancellationToken token);
 
         Task RemoveClientAsync(Guid id, CancellationToken token);
+
+        Task<List<Client>> GetAllAsync(CancellationToken token);
     }
 }
