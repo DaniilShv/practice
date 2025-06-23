@@ -9,6 +9,11 @@ namespace BankApi.Service
     public class BankBranchService(IBankBranchRepository _bankBranchRepository,
         IMapper _mapper) : IBankBranchService
     {
+        /// <summary>
+        /// Создает экземпляр BankBranch и делает асинхронный запрос к repository
+        /// </summary>
+        /// <param name="dto">Информация для создания банковского отделения</param>
+        /// <param name="token">Cancellation token</param>
         public async Task CreateBankBranchAsync(BankBranchCreateDto dto, CancellationToken token)
         {
             var bank = _mapper.Map<BankBranch>(dto);

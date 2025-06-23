@@ -2852,7 +2852,8 @@
         "dependencies": {
           "BankApi.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.5",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "Scrutor": "6.1.0"
         },
         "compile": {
           "bin/placeholder/BankApi.Infrastructure.dll": {}

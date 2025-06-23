@@ -8,6 +8,12 @@ namespace BankApi.Service
     public class BankCardService(IBankCardRepository _bankCardRepository) : IBankCardService
     {
         static Random rnd = new Random();
+
+        /// <summary>
+        /// Создает экземпляр BankCard и делает асинхронный запрос к repository
+        /// </summary>
+        /// <param name="bankRecordId">ID банковского счета, на который ссылается карта</param>
+        /// <param name="token">Cancellation token</param>
         public async Task CreateBankCardAsync(Guid bankRecordId, CancellationToken token)
         {
             var card = new BankCard
@@ -21,11 +27,17 @@ namespace BankApi.Service
             await _bankCardRepository.CreateAsync(card, token);
         }
 
-        public async Task PayCardAsync(BankCardPayDto dto, string nameSeller, CancellationToken token)
+        /// <summary>
+        /// Делает асинхронный запрос с информацией о покупке с карты к repository
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="nameSeller">Название получателя платежа</param>
+        /// <param name="token">Cancellation token</param>
+        public async Task PayCardAsync(BankCardPayDto dto, CancellationToken token)
         {
             var payment = new PaymentHistory
             {
-                Name = nameSeller,
+                Name = dto.NameSeller,
                 Date = DateTime.UtcNow,
                 Total = dto.Sum
             };

@@ -1,6 +1,6 @@
-﻿using BankApi.Service.Interfaces;
+﻿using BankApi.Domain.Interfaces;
+using BankApi.Service.Interfaces;
 using BankApi.Service.MappingProfiles;
-using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BankApi.Service.Extensions
@@ -9,7 +9,9 @@ namespace BankApi.Service.Extensions
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(BankProfile));
+            services.AddAutoMapper(typeof(BankCardProfile), typeof(BankBranchProfile),
+                typeof(BankClientProfile), typeof(BankEmployeeProfile), typeof(BankRecordProfile),
+                typeof(ClientCreditProfile), typeof(ClientDepositProfile));
 
             services.Scan(scan =>
             {

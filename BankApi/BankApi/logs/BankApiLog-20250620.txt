@@ -26,3 +26,46 @@
 2025-06-20 10:04:00.817 +05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
 2025-06-20 10:04:00.819 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/favicon-32x32.png - 200 628 image/png 10.1976ms
 2025-06-20 10:04:00.839 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 54.7264ms
+2025-06-20 15:53:04.127 +05:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-20 15:53:04.279 +05:00 [INF] Now listening on: https://localhost:7262
+2025-06-20 15:53:04.280 +05:00 [INF] Now listening on: http://localhost:5027
+2025-06-20 15:53:04.350 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-20 15:53:04.351 +05:00 [INF] Hosting environment: Development
+2025-06-20 15:53:04.352 +05:00 [INF] Content root path: C:\practice\practice\BankApi\BankApi
+2025-06-20 15:53:04.783 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/index.html - null null
+2025-06-20 15:53:04.909 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/index.html - 200 null text/html;charset=utf-8 127.3065ms
+2025-06-20 15:53:05.006 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-20 15:53:05.014 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 8.3923ms
+2025-06-20 15:53:05.211 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_vs/browserLink - null null
+2025-06-20 15:53:05.333 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_vs/browserLink - 200 null text/javascript; charset=UTF-8 121.5683ms
+2025-06-20 15:53:05.495 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - null null
+2025-06-20 15:53:05.536 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 41.0583ms
+2025-06-20 16:02:32.100 +05:00 [INF] User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-20 16:02:32.215 +05:00 [INF] Now listening on: https://localhost:7262
+2025-06-20 16:02:32.216 +05:00 [INF] Now listening on: http://localhost:5027
+2025-06-20 16:02:32.296 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-20 16:02:32.298 +05:00 [INF] Hosting environment: Development
+2025-06-20 16:02:32.299 +05:00 [INF] Content root path: C:\practice\practice\BankApi\BankApi
+2025-06-20 16:02:32.789 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/index.html - null null
+2025-06-20 16:02:32.911 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/index.html - 200 null text/html;charset=utf-8 123.149ms
+2025-06-20 16:02:32.996 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-20 16:02:33.007 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 10.7335ms
+2025-06-20 16:02:33.008 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/_vs/browserLink - null null
+2025-06-20 16:02:33.034 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.9993ms
+2025-06-20 16:02:33.192 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - null null
+2025-06-20 16:02:33.213 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7262/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.8855ms
+2025-06-20 16:02:56.422 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7262/api/1/Client/LoginClient - application/json 47
+2025-06-20 16:02:56.467 +05:00 [INF] Executing endpoint 'BankApi.Controllers.ClientController.LoginClient (BankApi)'
+2025-06-20 16:02:56.493 +05:00 [INF] Route matched with {action = "LoginClient", controller = "Client"}. Executing controller action with signature System.Threading.Tasks.Task`1[BankApi.Domain.DTOs.ClientShowDto] LoginClient(BankApi.Domain.DTOs.LoginDto) on controller BankApi.Controllers.ClientController (BankApi).
+2025-06-20 16:02:58.150 +05:00 [INF] Executed DbCommand (46ms) [Parameters=[@__dto_Login_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."DateBirth", c."Login", c."Name", c."NumberPassport", c."PasswordHash", c."Patronymic", c."RefreshToken", c."RefreshTokenExpiryTime", c."SerialPassport", c."Surname"
+FROM "Clients" AS c
+WHERE c."Login" = @__dto_Login_0
+LIMIT 1
+2025-06-20 16:02:58.319 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?', @p2='?', @p3='?' (DbType = Int64), @p4='?', @p5='?', @p6='?', @p7='?' (DbType = DateTime), @p8='?' (DbType = Int32), @p9='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Clients" SET "DateBirth" = @p0, "Login" = @p1, "Name" = @p2, "NumberPassport" = @p3, "PasswordHash" = @p4, "Patronymic" = @p5, "RefreshToken" = @p6, "RefreshTokenExpiryTime" = @p7, "SerialPassport" = @p8, "Surname" = @p9
+WHERE "Id" = @p10;
+2025-06-20 16:02:58.357 +05:00 [INF] Executing ObjectResult, writing value of type 'BankApi.Domain.DTOs.ClientShowDto'.
+2025-06-20 16:02:58.371 +05:00 [INF] Executed action BankApi.Controllers.ClientController.LoginClient (BankApi) in 1874.8228ms
+2025-06-20 16:02:58.373 +05:00 [INF] Executed endpoint 'BankApi.Controllers.ClientController.LoginClient (BankApi)'
+2025-06-20 16:02:58.379 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7262/api/1/Client/LoginClient - 200 null application/json; charset=utf-8 1956.8956ms

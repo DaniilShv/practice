@@ -12,8 +12,6 @@ namespace BankApi.Service.Validators
             RuleFor(x => x.BankBranchId).NotEmpty();
             RuleFor(x => x.DateBirth).NotEmpty().Must(x => GetAgeClient(x) >= 14);
             RuleFor(x => x.Position).NotEmpty();
-            RuleFor(x => x.Education).NotEmpty();
-            RuleFor(x => x.Gender).NotEmpty();
             RuleFor(x => x.Salary).NotEmpty();
             RuleFor(x => x.Login).NotEmpty();
             RuleFor(x => x.Password).NotEmpty();

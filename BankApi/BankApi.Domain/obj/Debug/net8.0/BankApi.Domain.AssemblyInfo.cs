@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankApi.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e472316c0b820495afb3718611b7825d4b30529")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbd8217cb4cf4073d3e430b5caf644a4652be2ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankApi.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankApi.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

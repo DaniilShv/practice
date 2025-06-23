@@ -6,17 +6,15 @@ namespace BankApi.Infrastructure.Extensions
 {
     public static class RepositoryExtension
     {
-        public static void AddRepository(this IServiceCollection service)
+        public static void AddRepository(this IServiceCollection services)
         {
-            service.AddScoped<ILocationRepository, LocationRepository>();
-            service.AddScoped<IBankCardRepository, BankCardRepository>();
-            service.AddScoped<IClientRepository, ClientRepository>();
-            service.AddScoped<IBankBranchRepository, BankBranchRepository>();
-            service.AddScoped<IClientDepositsRepository, ClientDepositsRepository>();
-            service.AddScoped<IBankRecordRepository, BankRecordRepository>();
-            service.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            service.AddScoped<IClientCreditRepository, ClientCreditRepository>();
-            service.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.Scan(scan =>
+            {
+                scan.FromAssemblyOf<ClientRepository>()
+                .AddClasses(classes => classes.Where(x => x.Name.EndsWith("Repository")))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime();
+            });
         }
     }
 }

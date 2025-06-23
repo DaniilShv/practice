@@ -28,13 +28,9 @@ namespace BankApi.Controllers
         /// <param name="nameSeller">Название продавца</param>
         [HttpPut("PayCard")]
         [Authorize(Policy = "User")]
-        public async Task PayCard([FromQuery] BankCardPayDto dto, [FromQuery] string nameSeller)
+        public async Task PayCard([FromBody] BankCardPayDto dto)
         {
-            if (nameSeller == null || nameSeller.Length == 0)
-                throw new ArgumentNullException("Укажите корректное название получателя");
-
-            await _bankCardService
-                .PayCardAsync(dto, nameSeller, HttpContext.RequestAborted);
+            await _bankCardService.PayCardAsync(dto, HttpContext.RequestAborted);
         }
     }
 }

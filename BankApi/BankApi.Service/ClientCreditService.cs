@@ -10,6 +10,11 @@ namespace BankApi.Service
     public class ClientCreditService(IClientCreditRepository _clientCreditRepository,
         IMapper _mapper) : IClientCreditService
     {
+        /// <summary>
+        /// Создает запрос к repository о взятии кредита клиентом банка
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="token">Cancellation token</param>
         public async Task CreateCreditAsync(ClientCreditCreateDto dto, CancellationToken token)
         {
             var dtPercent = dto.Type == TypeAccrual.EveryYear ? 
@@ -24,12 +29,23 @@ namespace BankApi.Service
             await _clientCreditRepository.CreateAsync(entity, token);
         }
 
+        /// <summary>
+        /// Создает запрос к repository о выплате кредита клиентом банка
+        /// </summary>
+        /// <param name="clientId">ID клиента</param>
+        /// <param name="creditId">ID кредита</param>
+        /// <param name="token">Cancellation token</param>
         public async Task RemoveCreditAsync(Guid clientId, Guid creditId, CancellationToken token)
         {
 
             await _clientCreditRepository.RemoveAsync(clientId, creditId, token);
         }
 
+        /// <summary>
+        /// Создает запрос к repository о пополнении кредита клиентом банка
+        /// </summary>
+        /// <param name="dto">Информация о кредите и банковском счете</param>
+        /// <param name="token">Cancellation token</param>
         public async Task TransferMoneyOnCreditAsync(TransferMoneyCreditDto dto, CancellationToken token)
         {
             await _clientCreditRepository.TransferMoneyOnCredit(dto, token);

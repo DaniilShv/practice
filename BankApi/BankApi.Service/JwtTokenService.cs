@@ -31,6 +31,10 @@ namespace BankApi.Service
             };
         }
 
+        /// <summary>
+        /// Создает refresh token
+        /// </summary>
+        /// <returns>Refresh token</returns>
         public string GenerateRefreshToken()
         {
             var randomNumber = new byte[32];
@@ -42,6 +46,11 @@ namespace BankApi.Service
             return Convert.ToBase64String(randomNumber);
         }
 
+        /// <summary>
+        /// Получает информацию о клиенте из jwt token 
+        /// </summary>
+        /// <param name="token">Jwt token</param>
+        /// <returns>Информация из токена</returns>
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -61,6 +70,11 @@ namespace BankApi.Service
             return claims;
         }
 
+        /// <summary>
+        /// Создает Jwt token
+        /// </summary>
+        /// <param name="claims">Дополнительная информация</param>
+        /// <returns>Jwt token</returns>
         public string GetToken(IEnumerable<Claim> claims)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Value.SecretKey));

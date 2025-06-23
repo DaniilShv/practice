@@ -9,6 +9,7 @@ namespace BankApi.Service.Validators
         {
             RuleFor(x => x.CardId).NotEmpty();
             RuleFor(x => x.Sum).NotEmpty().GreaterThan(0);
+            RuleFor(x => x.NameSeller).NotEmpty().Must(x => x.Length > 0);
         }
     }
 }

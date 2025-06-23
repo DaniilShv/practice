@@ -308,19 +308,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "CardId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "Sum",
-        "Type": "System.Decimal",
-        "IsRequired": false
-      },
-      {
-        "Name": "nameSeller",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "BankApi.Domain.DTOs.BankCardPayDto",
+        "IsRequired": true
       },
       {
         "Name": "v",

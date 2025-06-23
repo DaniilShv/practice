@@ -12,7 +12,10 @@ namespace BankApi.Service
     public class ClientService(IClientRepository _clientRepository,
         IMapper _mapper) : IClientService
     {
-
+        /// <summary>
+        /// Создает запрос к repository на создание клиента банка
+        /// </summary>
+        /// <param name="dto">Информация о клиенте банка</param>
         public async Task CreateClientAsync(ClientCreateDto dto, CancellationToken token)
         {
             var hassher = new PasswordHasher();
@@ -24,6 +27,11 @@ namespace BankApi.Service
             await _clientRepository.CreateAsync(client, token);
         }
 
+        /// <summary>
+        /// Банковские карты клиента по ID банковского счета
+        /// </summary>
+        /// <param name="bankRecordId">ID банковского счета</param>
+        /// <returns>Список банковских карт</returns>
         public async Task<List<BankCardShowDto>> GetAllBankCardsAsync(Guid bankRecordId, CancellationToken token)
         {
             var list = await _clientRepository.GetAllBankCardsAsync(bankRecordId, token);
@@ -31,11 +39,21 @@ namespace BankApi.Service
             return list;
         }
 
+        /// <summary>
+        /// Банковские счета клиента по ID клиента
+        /// </summary>
+        /// <param name="clientId">ID клиента</param>
+        /// <returns>Банковские счета клиента</returns>
         public async Task<List<BankRecordDto>> GetBankRecordsAsync(Guid clientId, CancellationToken token)
         {
             return await _clientRepository.GetAllBankRecordsAsync(clientId, token);
         }
 
+        /// <summary>
+        /// Проверка клиента в базе данных по логину и паролю
+        /// </summary>
+        /// <param name="dto">Логин и пароль</param>
+        /// <returns>Клиент банка</returns>
         public async Task<ClientShowDto> LoginClientAsync(LoginDto dto, string refreshToken,
             CancellationToken token)
         {
@@ -60,9 +78,14 @@ namespace BankApi.Service
                     throw new Exception("Введите верный пароль");
             }
             else
-                throw new Exception("Введите верный логин");
+                throw new Exception("Пользователь с этим логином не найден в базе данных");
         }
 
+        /// <summary>
+        /// Получить сведения о клиенте банка
+        /// </summary>
+        /// <param name="client">Информация о клиенте</param>
+        /// <returns>Сведения о клиенте банка</returns>
         public List<Claim> GetClaimClient(ClientShowDto client)
         {
 
@@ -93,12 +116,16 @@ namespace BankApi.Service
             return age;
         }
 
+        /// <summary>
+        /// Делает запрос к repository о клиенте банка по refresh token
+        /// </summary>
+        /// <returns>Клиент банка</returns>
         public async Task<Client> GetByRefreshTokenAsync(string refreshToken, CancellationToken token)
         {
             var client = await _clientRepository.GetByRefreshTokenAsync(refreshToken, token);
 
             if (client == null)
-                throw new DataException("Укажите верный refresh Token");
+                throw new DataException("Пользователь с этим refresh Token не найден в базе данных");
 
             return client;
         }

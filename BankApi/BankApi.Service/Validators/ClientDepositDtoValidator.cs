@@ -12,7 +12,6 @@ namespace BankApi.Service.Validators
             RuleFor(x => x.Total).NotEmpty().GreaterThan(5000);
             RuleFor(x => x.Dist).NotEmpty().GreaterThan(0);
             RuleFor(x => x.Percent).NotEmpty().GreaterThan(0);
-            RuleFor(x => x.Type).NotEmpty();
         }
     }
 

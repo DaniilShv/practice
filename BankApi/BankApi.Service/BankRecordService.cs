@@ -9,6 +9,11 @@ namespace BankApi.Service
     public class BankRecordService(IBankRecordRepository _bankRecordRepository,
         IMapper _mapper) : IBankRecordService
     {
+        /// <summary>
+        /// Делает запрос к repository о создании банковского счета
+        /// </summary>
+        /// <param name="dto">Информация для создания банковского счета</param>
+        /// <param name="token">Cancellation token</param>
         public async Task CreateBankRecordAsync(BankRecordCreateDto dto, CancellationToken token)
         {
             var record = _mapper.Map<BankRecord>(dto);
@@ -18,6 +23,11 @@ namespace BankApi.Service
             await _bankRecordRepository.CreateAsync(record, token);
         }
 
+        /// <summary>
+        /// Делает запрос к repository о пополнении банковского счета
+        /// </summary>
+        /// <param name="dto">Информация о финансовой операции</param>
+        /// <param name="token">Cancellation token</param>
         public async Task DepositMoneyOnRecord(DepositBankRecordDto dto, CancellationToken token)
         {
             var record = new BankRecord
@@ -29,6 +39,11 @@ namespace BankApi.Service
             await _bankRecordRepository.DepositMoneyOnRecord(record, token);
         }
 
+        /// <summary>
+        /// Делает запрос к repository о снятии денег из банковского счета
+        /// </summary>
+        /// <param name="dto">Информация о финансовой операции</param>
+        /// <param name="token">Cancellation token</param>
         public async Task WithdrawalMoneyOnRecordAsync(WithdrawalBankRecordDto dto, CancellationToken token)
         {
             await _bankRecordRepository.WithdrawalMoneyOnRecordAsync(dto.BankRecordId, dto.Sum, token);
