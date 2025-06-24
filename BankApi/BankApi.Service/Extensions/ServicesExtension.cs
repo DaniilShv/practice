@@ -2,6 +2,8 @@
 using BankApi.Service.Interfaces;
 using BankApi.Service.MappingProfiles;
 using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel;
+using System.Data;
 
 namespace BankApi.Service.Extensions
 {

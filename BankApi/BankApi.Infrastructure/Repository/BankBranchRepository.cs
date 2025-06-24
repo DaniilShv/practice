@@ -1,6 +1,8 @@
 ﻿using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
+using BankApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BankApi.Infrastructure.Repository
 {
@@ -38,7 +40,24 @@ namespace BankApi.Infrastructure.Repository
         {
             var item = await _context.BankBranches.FirstOrDefaultAsync(x => x.Id == id, token);
 
+            if (item == null)
+                throw new ArgumentNullException("Банковское отделение с таким ID не найден в базе данных банка");
+
             return item;
+        }
+
+        public DataTable GetDataTable()
+        {
+            return _context.BankBranches.Select(x => new { 
+                Id = x.Id,
+                LocationId = x.LocationId,
+                Adress = x.Adress
+            }).ToDataTable();
+        }
+
+        public string GetTableName()
+        {
+            return "BankBranches";
         }
 
         /// <summary>

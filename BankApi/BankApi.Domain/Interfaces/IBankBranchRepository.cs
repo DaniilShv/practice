@@ -2,7 +2,7 @@
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface IBankBranchRepository : IRepository<BankBranch>
+    public interface IBankBranchRepository : IRepository<BankBranch>, IExcelRepository
     {
 
     }

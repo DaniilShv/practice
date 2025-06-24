@@ -1,7 +1,9 @@
 ﻿using BankApi.Domain.DTOs;
 using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
+using BankApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BankApi.Infrastructure.Repository
 {
@@ -55,7 +57,30 @@ namespace BankApi.Infrastructure.Repository
         {
             var item = await _context.PaymentHistories.FirstOrDefaultAsync(x => x.Id == id);
 
+            if (item == null)
+                throw new ArgumentNullException("Банковский платеж с таким ID не найден в базе данных банка");
+
             return item;
+        }
+
+        public DataTable GetDataTable()
+        {
+            return _context.PaymentHistories
+                .Select(x => new
+                {
+                    Id = x.Id,
+                    BankRecordId = x.BankRecordId,
+                    Name = x.Name,
+                    Total = x.Total,
+                    Date = x.Date,
+                    Status = x.Status
+                })
+                .ToDataTable();
+        }
+
+        public string GetTableName()
+        {
+            return "PaymentHistories";
         }
 
         /// <summary>

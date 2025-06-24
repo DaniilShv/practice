@@ -1,7 +1,9 @@
 ﻿using BankApi.Domain.DTOs;
 using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
+using BankApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BankApi.Infrastructure.Repository
 {
@@ -41,7 +43,32 @@ namespace BankApi.Infrastructure.Repository
                 .FirstOrDefaultAsync(x => x.ClientId == clientId 
                 && x.CreditId == creditId, token);
 
+            if (item == null)
+                throw new ArgumentNullException("Банковский кредит с таким ID не найден в базе данных банка");
+
             return item;
+        }
+
+        public DataTable GetDataTable()
+        {
+            return _context.ClientCredits
+                .Select(x => new
+                {
+                    ClientId = x.ClientId,
+                    CreditId = x.CreditId,
+                    Total = x.Total,
+                    DateStart = x.DateStart,
+                    DateAccrualPercent = x.DateAccrualPercent,
+                    DateFinal = x.DateFinal,
+                    Percent = x.Percent,
+                    Type = x.Type
+                })
+                .ToDataTable();
+        }
+
+        public string GetTableName()
+        {
+            return "ClientCredits";
         }
 
         /// <summary>

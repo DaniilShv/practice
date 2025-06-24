@@ -1,7 +1,9 @@
 ﻿using BankApi.Domain.DTOs;
 using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
+using BankApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BankApi.Infrastructure.Repository
 {
@@ -39,7 +41,28 @@ namespace BankApi.Infrastructure.Repository
         {
             var item = await _context.BankCards.FirstOrDefaultAsync(x => x.Id == id, token);
 
+            if (item == null)
+                throw new ArgumentNullException("Банковская карта с таким ID не найдена в базе данных банка");
+
             return item;
+        }
+
+        public DataTable GetDataTable()
+        {
+            return _context.BankCards.Select(x => new
+            {
+                Id = x.Id,
+                BankRecordId = x.BankRecordId,
+                CardNumber = x.CardNumber,
+                CvvCode = x.CvvCode,
+                Date = x.Date
+            })
+                .ToDataTable();
+        }
+
+        public string GetTableName()
+        {
+            return "BankCards";
         }
 
         /// <summary>
@@ -73,7 +96,7 @@ namespace BankApi.Infrastructure.Repository
                 }
             }
             else
-                throw new ArgumentNullException("Оформите банковскую карту");
+                throw new ArgumentNullException("Банковская карта с таким ID не найдена в базе данных банка");
         }
 
         /// <summary>

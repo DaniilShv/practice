@@ -2,7 +2,7 @@
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface ILocationRepository : IRepository<Location>
+    public interface ILocationRepository : IRepository<Location>, IExcelRepository
     {
 
     }

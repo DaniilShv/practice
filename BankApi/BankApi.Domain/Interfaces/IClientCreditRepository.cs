@@ -3,7 +3,7 @@ using BankApi.Domain.Entities;
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface IClientCreditRepository
+    public interface IClientCreditRepository : IExcelRepository
     {
         Task<List<ClientCredit>> GetAllAsync(CancellationToken token);
 

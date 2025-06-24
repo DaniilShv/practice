@@ -1,22 +1,29 @@
-﻿using ClosedXML.Excel;
+﻿using BankApi.Domain.Interfaces;
+using ClosedXML.Excel;
+using System.Data;
 
 namespace BankApi.Service.Services
 {
     public static class ExcelService
     {
         /// <summary>
-        /// Создает excel документ с указанным типом сущности
+        /// Создает excel документ с данными всех сущностей базы данных
         /// </summary>
-        /// <typeparam name="T">Тип сущности</typeparam>
-        /// <param name="table">Все экземпляры сущности</param>
+        /// <param name="services">Все репозитории реализующие IExcelRepository</param>
         /// <param name="filePath">Путь до файла</param>
-        /// <param name="namePage">Название листа в Excel</param>
-        public static void CreateExcelDoc<T>(IEnumerable<T> table, string filePath, string namePage)
+        public static void CreateExcelDoc(IEnumerable<IExcelRepository> services, string filePath)
         {
-            if (!File.Exists(filePath))
-                CreateAndWriteExcelDoc(table, filePath, namePage);
-            else
-                WriteExcelDoc(table, filePath, namePage);
+            foreach (var item in services)
+            {
+                var dataTable = item.GetDataTable();
+
+                var namePage = item.GetTableName();
+
+                if (!File.Exists(filePath))
+                    CreateAndWriteExcelDoc(dataTable, filePath, namePage);
+                else
+                    WriteExcelDoc(dataTable, filePath, namePage);
+            }
         }
 
         /// <summary>
@@ -26,7 +33,7 @@ namespace BankApi.Service.Services
         /// <param name="table">Все экземпляры сущности</param>
         /// <param name="filePath">Путь до файла</param>
         /// <param name="namePage">Название листа в Excel</param>
-        static void CreateAndWriteExcelDoc<T>(IEnumerable<T> table, string filePath, string namePage)
+        static void CreateAndWriteExcelDoc(DataTable table, string filePath, string namePage)
         {
             using (var workbook = new XLWorkbook())
             {
@@ -45,7 +52,7 @@ namespace BankApi.Service.Services
         /// <param name="table">Все экземпляры сущности</param>
         /// <param name="filePath">Путь до файла</param>
         /// <param name="namePage">Название листа в Excel</param>
-        static void WriteExcelDoc<T>(IEnumerable<T> table, string filePath, string namePage)
+        static void WriteExcelDoc(DataTable table, string filePath, string namePage)
         {
             using (var workbook = new XLWorkbook(filePath))
             {

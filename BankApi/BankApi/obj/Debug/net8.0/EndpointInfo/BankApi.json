@@ -1011,10 +1011,20 @@
         }
       }
     },
-    "/api/Excel/CreateExcelFile": {
+    "/api/{v}/Excel/CreateExcelFile": {
       "get": {
         "tags": [
           "Excel"
+        ],
+        "parameters": [
+          {
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -1023,7 +1033,7 @@
         }
       }
     },
-    "/api/Payment/GetPaymentByBankRecord/{bankRecordId}": {
+    "/api/{v}/Payment/GetPaymentByBankRecord/{bankRecordId}": {
       "get": {
         "tags": [
           "Payment"
@@ -1036,6 +1046,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],

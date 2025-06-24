@@ -3,7 +3,7 @@ using BankApi.Domain.Entities;
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface IClientDepositsRepository
+    public interface IClientDepositsRepository : IExcelRepository
     {
         Task<List<ClientDeposit>> GetByDateAccuralAsync(DateTime date, CancellationToken token);
 

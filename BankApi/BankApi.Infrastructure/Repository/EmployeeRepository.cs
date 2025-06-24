@@ -1,7 +1,9 @@
 ﻿using BankApi.Domain.DTOs;
 using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
+using BankApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BankApi.Infrastructure.Repository
 {
@@ -50,6 +52,32 @@ namespace BankApi.Infrastructure.Repository
             var item = await _context.Employees.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
 
             return item;
+        }
+
+        public DataTable GetDataTable()
+        {
+            return _context.Employees
+                .Select(x => new
+                {
+                    Id = x.Id,
+                    Surname = x.Surname,
+                    Name = x.Name,
+                    Patronymic = x.Patronymic,
+                    DateBirth = x.DateBirth,
+                    BankBranchId = x.BankBranchId,
+                    Education = x.Education,
+                    Gender = x.Gender,
+                    Position = x.Position,
+                    Salary = x.Salary,
+                    Login = x.Login,
+                    PasswordHash = x.PasswordHash
+                })
+                .ToDataTable();
+        }
+
+        public string GetTableName()
+        {
+            return "Employees";
         }
 
         /// <summary>

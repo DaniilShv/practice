@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BankApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/{v:apiversion}/[controller]")]
     [ApiVersion("1.0")]
     public class PaymentController(IPaymentService _paymentService) : ControllerBase
     {

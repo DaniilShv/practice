@@ -75,7 +75,7 @@ namespace BankApi.Service.Services
                     return clientShowDto;
                 }
                 else
-                    throw new Exception("Введите верный пароль");
+                    throw new Exception("Пользователь с таким паролем не надйен в базе данных");
             }
             else
                 throw new Exception("Пользователь с этим логином не найден в базе данных");

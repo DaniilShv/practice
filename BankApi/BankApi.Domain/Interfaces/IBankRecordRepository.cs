@@ -2,7 +2,7 @@
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface IBankRecordRepository : IRepository<BankRecord>
+    public interface IBankRecordRepository : IRepository<BankRecord>, IExcelRepository
     {
         Task DepositMoneyOnRecord(BankRecord record, CancellationToken token);
 

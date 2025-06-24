@@ -3,7 +3,7 @@ using BankApi.Domain.Entities;
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface IEmployeeRepository: IRepository<Employee>
+    public interface IEmployeeRepository: IRepository<Employee>, IExcelRepository
     {
         Task<Employee> LoginEmployeeAsync(LoginDto dto, CancellationToken token);
 

@@ -29,7 +29,7 @@ builder.Services.AddOptions<JwtSettings>().BindConfiguration("Jwt");
 
 builder.Services.AddJwtService(builder.Configuration);
 
-//builder.Services.AddHostedService<DepositBackgroundService>();
+builder.Services.AddHostedService<DepositBackgroundService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

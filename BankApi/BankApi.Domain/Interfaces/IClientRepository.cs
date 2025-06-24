@@ -3,7 +3,7 @@ using BankApi.Domain.Entities;
 
 namespace BankApi.Domain.Interfaces
 {
-    public interface IClientRepository : IRepository<Client>
+    public interface IClientRepository : IRepository<Client>, IExcelRepository
     {
         Task<List<BankRecordDto>> GetAllBankRecordsAsync(Guid clientId, CancellationToken token);
 

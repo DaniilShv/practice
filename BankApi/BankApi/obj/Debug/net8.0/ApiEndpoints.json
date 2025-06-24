@@ -664,17 +664,23 @@
   {
     "ContainingType": "BankApi.Controllers.ExcelController",
     "Method": "CreateExcelFile",
-    "RelativePath": "api/Excel/CreateExcelFile",
+    "RelativePath": "api/{v}/Excel/CreateExcelFile",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "v",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "BankApi.Controllers.PaymentController",
     "Method": "GetPaymentByBankRecord",
-    "RelativePath": "api/Payment/GetPaymentByBankRecord/{bankRecordId}",
+    "RelativePath": "api/{v}/Payment/GetPaymentByBankRecord/{bankRecordId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -682,6 +688,11 @@
       {
         "Name": "bankRecordId",
         "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "v",
+        "Type": "",
         "IsRequired": true
       }
     ],

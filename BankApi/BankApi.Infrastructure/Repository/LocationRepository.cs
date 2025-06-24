@@ -1,6 +1,8 @@
 ﻿using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
+using BankApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BankApi.Infrastructure.Repository
 {
@@ -35,7 +37,22 @@ namespace BankApi.Infrastructure.Repository
         /// <returns>Экземпляр объекта</returns>
         public async Task<Location> GetByIdAsync(Guid id, CancellationToken token)
         {
-            return await _context.Locations.FirstOrDefaultAsync(x => x.Id == id, token);
+            var item = await _context.Locations.FirstOrDefaultAsync(x => x.Id == id, token);
+
+            if (item == null)
+                throw new ArgumentNullException("Город с таким ID не найден в базе данных банка");
+
+            return item;
+        }
+
+        public DataTable GetDataTable()
+        {
+            return _context.Locations.ToDataTable();
+        }
+
+        public string GetTableName()
+        {
+            return "Locations";
         }
 
         /// <summary>

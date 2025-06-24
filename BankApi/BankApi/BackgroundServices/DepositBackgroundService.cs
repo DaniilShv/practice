@@ -8,6 +8,8 @@ namespace BankApi.BackgroundServices
 
         private ParallelOptions _options;
 
+        const int _depositDelay = 5000;
+
         public DepositBackgroundService(IServiceScopeFactory scope)
         {
             _scope = scope;
@@ -21,13 +23,13 @@ namespace BankApi.BackgroundServices
 
             var service = scope.ServiceProvider.GetRequiredService<IClientDepositsService>();
 
-            var dtUtc = DateTime.SpecifyKind(new DateTime(2025, 6, 10, 18, 23, 40), DateTimeKind.Utc);
+            var dtUtc = DateTime.UtcNow;
 
             _options.CancellationToken = stoppingToken;
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                await Task.Delay(5000);
+                await Task.Delay(_depositDelay);
                 var clients = await service.GetByDateAccuralAsync(dtUtc, stoppingToken);
 
                 if (clients.Count != 0)
@@ -36,15 +38,16 @@ namespace BankApi.BackgroundServices
                     {
                         if (clients[i].DateAccrualPercent <= clients[i].DateFinal)
                         {
-                            clients[i].Total += clients[i].Total * 0.013m;
-                            clients[i].DateAccrualPercent = clients[i].DateAccrualPercent.AddMinutes(1);
+                            double percent = clients[i].Percent / 12;
+                            clients[i].Total += clients[i].Total * (decimal)percent;
+                            clients[i].DateAccrualPercent = clients[i].DateAccrualPercent.AddMonths(1);
                             await service.UpdateTotalByKeyAsync(clients[i].ClientId,
                                 clients[i].DepositId, clients[i].DateAccrualPercent, clients[i].Total, token);
                         }
                     });
                 }
 
-                dtUtc = dtUtc.AddMinutes(1);
+                dtUtc = dtUtc.AddMonths(1);
             }
         }
 

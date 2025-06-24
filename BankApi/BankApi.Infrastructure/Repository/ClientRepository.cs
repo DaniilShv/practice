@@ -1,7 +1,9 @@
 ﻿using BankApi.Domain.DTOs;
 using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
+using BankApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BankApi.Infrastructure.Repository
 {
@@ -69,6 +71,9 @@ namespace BankApi.Infrastructure.Repository
         {
             var client = await _context.Clients.FirstOrDefaultAsync(x => x.Id == id, token);
 
+            if (client == null)
+                throw new ArgumentNullException("Клиент банка с таким ID не найден в базе данных банка");
+
             return client;
         }
 
@@ -83,6 +88,29 @@ namespace BankApi.Infrastructure.Repository
             var item = await _context.Clients.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
 
             return item;
+        }
+
+        public DataTable GetDataTable()
+        {
+            return _context.Clients
+                .Select(x => new
+                {
+                    Id = x.Id,
+                    Surname = x.Surname,
+                    Name = x.Name,
+                    Patronymic = x.Patronymic,
+                    DateBirth = x.DateBirth,
+                    SerialPassport = x.SerialPassport,
+                    NumberPassport = x.NumberPassport,
+                    Login = x.Login,
+                    PasswordHash = x.PasswordHash
+                })
+                .ToDataTable();
+        }
+
+        public string GetTableName()
+        {
+            return "Clients";
         }
 
         /// <summary>

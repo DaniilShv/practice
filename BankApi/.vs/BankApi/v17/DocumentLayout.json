@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\practice\\practice\\BankApi\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B3517D60-CBB9-4DA8-B1AA-E810F18D6658}|BankApi.Infrastructure\\BankApi.Infrastructure.csproj|c:\\practice\\practice\\bankapi\\bankapi.infrastructure\\extensions\\repositoryextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3517D60-CBB9-4DA8-B1AA-E810F18D6658}|BankApi.Infrastructure\\BankApi.Infrastructure.csproj|solutionrelative:bankapi.infrastructure\\extensions\\repositoryextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,6 +51,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RepositoryExtension.cs",
+              "DocumentMoniker": "C:\\practice\\practice\\BankApi\\BankApi.Infrastructure\\Extensions\\RepositoryExtension.cs",
+              "RelativeDocumentMoniker": "BankApi.Infrastructure\\Extensions\\RepositoryExtension.cs",
+              "ToolTip": "C:\\practice\\practice\\BankApi\\BankApi.Infrastructure\\Extensions\\RepositoryExtension.cs*",
+              "RelativeToolTip": "BankApi.Infrastructure\\Extensions\\RepositoryExtension.cs*",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T10:52:50.738Z",
+              "EditorCaption": ""
             }
           ]
         }

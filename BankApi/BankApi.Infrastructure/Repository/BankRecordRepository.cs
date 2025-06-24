@@ -1,6 +1,8 @@
 ﻿using BankApi.Domain.Entities;
 using BankApi.Domain.Interfaces;
+using BankApi.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace BankApi.Infrastructure.Repository
 {
@@ -30,7 +32,7 @@ namespace BankApi.Infrastructure.Repository
             if (bankRecord != null)
                 bankRecord.Total = record.Total;
             else
-                throw new ArgumentNullException("Введите корректно идентификатор банковского счета");
+                throw new ArgumentNullException("Банковский счет с таким ID не найден в базе данных банка");
 
                 _context.BankRecords.Update(bankRecord);
 
@@ -57,7 +59,28 @@ namespace BankApi.Infrastructure.Repository
         {
             var item = await _context.BankRecords.FirstOrDefaultAsync(x => x.Id == id, token);
 
+            if (item == null)
+                throw new ArgumentNullException("Банковский счет с таким ID не найден в базе данных банка");
+
             return item;
+        }
+
+        public DataTable GetDataTable()
+        {
+            return _context.BankRecords
+                .Select(x => new
+                {
+                    Id = x.Id,
+                    ClientId = x.ClientId,
+                    BankBranchId = x.BankBranchId,
+                    Total = x.Total
+                })
+                .ToDataTable();
+        }
+
+        public string GetTableName()
+        {
+            return "BankRecords";
         }
 
         /// <summary>
@@ -99,7 +122,7 @@ namespace BankApi.Infrastructure.Repository
             if (bankRecord != null)
                 bankRecord.Total -= sum;
             else
-                throw new ArgumentNullException("Введите корректно идентификатор банковского счета");
+                throw new ArgumentNullException("Банковский счет с таким ID не найден в базе данных банка");
 
                 _context.BankRecords.Update(bankRecord);
 
